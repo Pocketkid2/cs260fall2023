@@ -1,1 +1,1 @@
-The quick brown fox jumps over the lazy dog
+The five boxing wizards jump quickly
