@@ -1,1 +1,1 @@
-The five boxing wizards jump quickly
+How quickly daft jumping zebras vex
