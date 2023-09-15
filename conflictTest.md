@@ -1,1 +1,1 @@
-Pack my box with five dozen liquor jugs
+How quickly daft jumping zebras vex
