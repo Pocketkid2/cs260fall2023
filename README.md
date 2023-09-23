@@ -33,14 +33,15 @@ The one-stop shop for film nerds. You can find information about movies, read re
 ## Key Features
 
 ### Things anybody who visits the site can do
-* Search any movie
-* View summary information on this site or follow links to read more on other sites
+* Search any movie and go to its page
+* See general information and reviews about it on this site
+* See links to additional sites with more information about that film
 
 ### Things only logged in users can do
 * Chat with other users
 * Score a movie
 * Write a text review for a movie
-* Mark a movie as either "want to see", "have seen", or "favorite"
+* Put movies on a watchlist and favorites list
 
 ## Technologies
 
