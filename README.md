@@ -6,6 +6,30 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 ## Design
 
+### Home Page Rough Sketch
+
+![Home Page Rough Sketch](images/StartupSketchHomePage.png)
+
+### Search Page Rough Sketch
+
+![Search Page Rough Sketch](images/StartupSketchSearchPage.png)
+
+### Chat Page Rough Sketch
+
+![Chat Page Rough Sketch](images/StartupSketchChatPage.png)
+
+### Profile Page Rough Sketch
+
+![Profile Page Rough Sketch](images/StartupSketchProfilePage.png)
+
+### Login Page Rough Sketch
+
+![Login Page Rough Sketch](images/StartupSketchLoginPage.png)
+
+### Signup Page Rough Sketch
+
+![Signup Page Rough Sketch](images/StartupSketchSignupPage.png)
+
 ## Key Features
 
 ### Things anybody who visits the site can do
@@ -28,3 +52,10 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Login - Require users to login to contribute anything
 * WebSocket - For chat
 * React - Porting website to react
+
+## Extra features if I have time and can figure it out
+
+* When logged in, login and signup button at the top go away and are replaced with a single "signout" button
+* Require users to verify their email address
+* Add more things on the home page
+* Integrate with more websites
