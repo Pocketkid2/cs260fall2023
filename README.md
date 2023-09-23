@@ -45,13 +45,13 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 ## Technologies
 
-* HTML - Sign-up page, Login page, Chat page, Search page, Profile page
+* HTML - Site format, navigation at the top, page layout, entry forms
 * CSS - Make everything look pretty
-* JavaScript - Make everything functional
-* Service - Contact IMDB and/or other services from the search page to get the data
+* JavaScript - Make everything functional (forms send to database or web APIs, response is returned and posted)
+* Service - Will make use of both internal DB and external web services via API (IMDB, etc)
 * DB - Store user information and movie reviews
 * Login - Require users to login to contribute anything
-* WebSocket - For chat
+* WebSocket - For chat area (users send messages to server, which gets forwarded to everyone who has the page open
 * React - Porting website to react
 
 ## Extra features if I have time and can figure it out
