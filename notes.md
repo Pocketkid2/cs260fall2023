@@ -8,3 +8,6 @@ Merging happens when you have two divergent branches, such as when GitHub repo i
 
 Elastic IP: 3.214.253.236 
 
+### Assignment: HTML Structure Elements
+
+You can put the full size image URL, and then use just width or height to resize it properly
