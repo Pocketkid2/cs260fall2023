@@ -60,3 +60,8 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Require users to verify their email address
 * Add more things on the home page
 * Integrate with more websites
+
+## Notes for Startup HTML assignment submission
+
+* Created the basic HTML pages and populated them with the necessary forms, and some placeholder data where database accessing will occur
+* Deployed startup to startup.filmhub.click and simon (with some small modifications) to simon.filmhub.click
