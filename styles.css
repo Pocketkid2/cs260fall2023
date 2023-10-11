@@ -1,0 +1,91 @@
+/* CSS global to the entire site */
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Gabarito', sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+header {
+	background-color: #dddddd;
+	font-size: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+header img {
+	width: 2em;
+	height: 2em;
+}
+
+header nav {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+}
+
+header ul {
+	list-style: none;
+	display: flex;
+	height: auto;
+}
+header li {
+	flex: 1;
+	padding: 10px 0;
+}
+
+header a {
+	border-radius: .5em;
+	padding: .5em;
+	color: black;
+}
+
+header a:hover {
+	background-color: #777777;
+}
+
+main {
+	flex: 1;
+	overflow-y: auto;
+	padding: 10px;
+}
+
+footer {
+	background-color: #333333;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-size: 24px;
+}
+
+footer span, footer a {
+	color: white;
+	padding: 10px;
+	margin: auto 10px;
+}
+
+footer img {
+	width: 1em;
+}
+
+hr {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+}
