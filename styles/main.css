@@ -48,7 +48,7 @@ header li {
 }
 
 header a {
-	border-radius: .5em;
+	/* border-radius: .5em; */
 	padding: .5em;
 	color: black;
 }
