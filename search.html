@@ -1,122 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Film Hub - Search</title>
-        <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="styles/main.css" />
-        <link rel="stylesheet" href="styles/search.css" />
-        <script src="scripts/main.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <img src="images/video-roll-icon.webp">
-            <nav>
-                <ul>
-                    <li><a id="index" href="index.html">Home</a></li>
-                    <li><a id="search" href="search.html">Search</a></li>
-                    <li><a id="chat" href="chat.html">Chat</a></li>
-                    <li><a id="profile" href="profile.html">Profile</a></li>
-                    <li><a id="login" href="login.html">Login</a></li>
-                    <li><a id="signup" href="signup.html">Signup</a></li>
-                </ul>
-            </nav>
-            <img src="images/film-movie-icon.webp">
-        </header>
-        <main>
-            <div>
-                <div>
-                    <h2>Search Bar</h2>
-                    <form method="get" action="">
-                        <input type="text" id="name" placeholder="Movie title" />
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-                <div>
-                    <h2>Search Results</h2>
-                    <table>
-                        <tr>
-                            <th>Film Title</th>
-                            <th>Release Year</th>
-                            <th>MPAA Rating</th>
-                            <th>Runtime</th>
-                            <th>Director</th>
-                        </tr>
-                        <tr>
-                            <td>Jurassic Park</td>
-                            <td>1993</td>
-                            <td>PG-13</td>
-                            <td>127 Minutes</td>
-                            <td>Steven Spielberg</td>
-                        </tr>
-                        <tr>
-                            <td>Apollo 13</td>
-                            <td>1995</td>
-                            <td>PG</td>
-                            <td>140 Minutes</td>
-                            <td>Ron Howard</td>
-                        </tr>
-                        <tr>
-                            <td>The Dark Knight</td>
-                            <td>2008</td>
-                            <td>PG-13</td>
-                            <td>152 Minutes</td>
-                            <td>Christopher Nolan</td>
-                        </tr>
-                        <tr>
-                            <td>Ferris Bueller's Day Off</td>
-                            <td>1986</td>
-                            <td>PG-13</td>
-                            <td>103 Minutes</td>
-                            <td>John Hughes</td>
-                        </tr>
-                        <tr>
-                            <td>The Abyss</td>
-                            <td>1989</td>
-                            <td>PG-13</td>
-                            <td>140 Minutes</td>
-                            <td>James Cameron</td>
-                        </tr>
-                        <tr>
-                            <td>Mad Max: Fury Road</td>
-                            <td>2015</td>
-                            <td>R</td>
-                            <td>120 Minutes</td>
-                            <td>George Miller</td>
-                        </tr>
-                        <tr>
-                            <td>Gravity</td>
-                            <td>2013</td>
-                            <td>PG-13</td>
-                            <td>91 Minutes</td>
-                            <td>Alfonso Cuarón</td>
-                        </tr>
-                    </table>
-                </div>
-                <div>
-                    <h2>Filter by</h2>
-                    <form method="get" action="">
-                        <label for="year">Year</label>
-                        <input type="range" name="year">
-                        <label for="rating">MPAA Rating</label>
-                        <select name="rating">
-                            <option>G</option>
-                            <option>PG</option>
-                            <option>PG-13</option>
-                            <option>R</option>
-                        </select>
-                        <label for="runtime">Runtime</label>
-                        <input type="range" name="runtime">
-                        <label for="director">Director</label>
-                        <input type="text" name="director">
-                    </form>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <span class="text-reset">Adam Taylor</span>
-            <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png" alt="GitHub Repository"></a>
-        </footer>
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Hub - Search</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/search.css" />
+    <script src="scripts/main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/video-roll-icon.webp">
+        <nav>
+            <ul>
+                <li><a id="index" href="index.html">Home</a></li>
+                <li><a id="search" href="search.html">Search</a></li>
+                <li><a id="chat" href="chat.html">Chat</a></li>
+                <li><a id="profile" href="profile.html">Profile</a></li>
+                <li><a id="login" href="login.html">Login</a></li>
+                <li><a id="signup" href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+        <img src="images/film-movie-icon.webp">
+    </header>
+    <main>
+        <div id="search-bar">
+            <h2>Search</h2>
+            <form method="get" action="">
+                <input type="text" id="name" placeholder="Movie title" />
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="search-filter">
+            <h2>Filter</h2>
+            <table>
+                <tr>
+                    <td><label for="year">Year</label></td>
+                    <td>
+                        <input class="rangeinput" type="text" name="minyear" placeholder="min">
+                        <input class="rangeinput" type="text" name="maxyear" placeholder="max">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="rating">MPAA Rating</label></td>
+                    <td>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" class="hidden-checkbox">
+                            <span class="checkbox-icon">G</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" class="hidden-checkbox">
+                            <span class="checkbox-icon">PG</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" class="hidden-checkbox">
+                            <span class="checkbox-icon">PG-13</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" class="hidden-checkbox">
+                            <span class="checkbox-icon">R</span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="runtime">Runtime</label></td>
+                    <td>
+                        <input class="rangeinput" type="text" name="mintime" placeholder="min">
+                        <input class="rangeinput" type="text" name="maxtime" placeholder="max">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="director">Director</label></td>
+                    <td><input id="namefilter" type="text" name="director" placeholder="name"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="search-results">
+            <h2>Results</h2>
+            <table>
+                <tr>
+                    <th id="results-title">
+                        <p>Film Title</p>
+                    </th>
+                    <th id="results-year">
+                        <p>Year</p>
+                    </th>
+                    <th id="results-rating">
+                        <p>Rating</p>
+                    </th>
+                    <th id="results-runtime">
+                        <p>Runtime</p>
+                    </th>
+                    <th id="results-director">
+                        <p>Director</p>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Jurassic Park</p>
+                    </td>
+                    <td>
+                        <p>1993</p>
+                    </td>
+                    <td>
+                        <p>PG-13</p>
+                    </td>
+                    <td>
+                        <p>127 minutes</p>
+                    </td>
+                    <td>
+                        <p>Steven Spielberg</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Apollo 13</p>
+                    </td>
+                    <td>
+                        <p>1995</p>
+                    </td>
+                    <td>
+                        <p>PG</p>
+                    </td>
+                    <td>
+                        <p>140 minutes</p>
+                    </td>
+                    <td>
+                        <p>Ron Howard</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>The Dark Knight</p>
+                    </td>
+                    <td>
+                        <p>2008</p>
+                    </td>
+                    <td>
+                        <p>PG-13</p>
+                    </td>
+                    <td>
+                        <p>152 minutes</p>
+                    </td>
+                    <td>
+                        <p>Christopher Nolan</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Ferris Bueller's Day Off</p>
+                    </td>
+                    <td>
+                        <p>1986</p>
+                    </td>
+                    <td>
+                        <p>PG-13</p>
+                    </td>
+                    <td>
+                        <p>103 minutes</p>
+                    </td>
+                    <td>
+                        <p>John Hughes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>The Abyss</p>
+                    </td>
+                    <td>
+                        <p>1989</p>
+                    </td>
+                    <td>
+                        <p>PG-13</p>
+                    </td>
+                    <td>
+                        <p>140 minutes</p>
+                    </td>
+                    <td>
+                        <p>James Cameron</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Mad Max: Fury Road</p>
+                    </td>
+                    <td>
+                        <p>2015</p>
+                    </td>
+                    <td>
+                        <p>R</p>
+                    </td>
+                    <td>
+                        <p>120 minutes</p>
+                    </td>
+                    <td>
+                        <p>George Miller</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Gravity</p>
+                    </td>
+                    <td>
+                        <p>2013</p>
+                    </td>
+                    <td>
+                        <p>PG-13</p>
+                    </td>
+                    <td>
+                        <p>91 minutes</p>
+                    </td>
+                    <td>
+                        <p>Alfonso Cuarón</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </main>
+    <footer>
+        <span class="text-reset">Adam Taylor</span>
+        <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png"
+                alt="GitHub Repository"></a>
+    </footer>
+</body>
+
 </html>

@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Film Hub - Signup</title>
-        <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="styles/main.css" />
-        <link rel="stylesheet" href="styles/signup.css" />
-        <script src="scripts/main.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <img src="images/video-roll-icon.webp">
-            <nav>
-                <ul>
-                    <li><a id="index" href="index.html">Home</a></li>
-                    <li><a id="search" href="search.html">Search</a></li>
-                    <li><a id="chat" href="chat.html">Chat</a></li>
-                    <li><a id="profile" href="profile.html">Profile</a></li>
-                    <li><a id="login" href="login.html">Login</a></li>
-                    <li><a id="signup" href="signup.html">Signup</a></li>
-                </ul>
-            </nav>
-            <img src="images/film-movie-icon.webp">
-        </header>
-        <main>
-            <h2>Enter your information</h2>
-            <form>
-                <input type="text" id="firstname" placeholder="First name"/>
 
-                <input type="text" id="lastname" placeholder="Last name"/>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Hub - Signup</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/signup.css" />
+    <script src="scripts/main.js" defer></script>
+</head>
 
-                <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate"/>
+<body>
+    <header>
+        <img src="images/video-roll-icon.webp">
+        <nav>
+            <ul>
+                <li><a id="index" href="index.html">Home</a></li>
+                <li><a id="search" href="search.html">Search</a></li>
+                <li><a id="chat" href="chat.html">Chat</a></li>
+                <li><a id="profile" href="profile.html">Profile</a></li>
+                <li><a id="login" href="login.html">Login</a></li>
+                <li><a id="signup" href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+        <img src="images/film-movie-icon.webp">
+    </header>
+    <main>
+        <h2>Enter your information</h2>
+        <form>
+            <input type="text" id="firstname" placeholder="First name" />
 
-                <label for="male">Male</label>
-                <input type="radio" id="male" value="male"/>
-                <label for="female">Female</label>
-                <input type="radio" id="female" value="female"/>
+            <input type="text" id="lastname" placeholder="Last name" />
 
-                <input type="text" placeholder="Choose a username"/>
-                <input type="text" placeholder="Confirm username"/>
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" />
 
-                <input type="password" placeholder="Choose a password"/>
-                <input type="password" placeholder="Confirm password"/>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="customRadio" class="custom-radio">
+                    Male
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="customRadio" class="custom-radio">
+                    Female
+                </label>
+            </div>
 
-                <input type="submit" />
-            </form>
-        </main>
-        <footer>
-            <span class="text-reset">Adam Taylor</span>
-            <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png" alt="GitHub Repository"></a>
-        </footer>
-    </body>
+            <div class="signupdiv">
+                <input type="text" placeholder="Choose a username" />
+                <input type="text" placeholder="Confirm username" />
+            </div>
+
+            <div class="signupdiv">
+                <input type="password" placeholder="Choose a password" />
+                <input type="password" placeholder="Confirm password" />
+            </div>
+
+            <input id="signupbutton" type="submit" value="Signup" />
+        </form>
+    </main>
+    <footer>
+        <span class="text-reset">Adam Taylor</span>
+        <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png"
+                alt="GitHub Repository"></a>
+    </footer>
+</body>
+
 </html>
