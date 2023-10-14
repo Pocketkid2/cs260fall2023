@@ -1,0 +1,31 @@
+main div {
+    display: flex;
+    flex-direction: column;
+    background-color: #eeeeee;
+    margin: 1em;
+}
+
+main ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+main h2 {
+    font-weight: lighter;
+    margin: .5em;
+}
+
+main li {
+}
+
+main img {
+    width: 8em;
+    margin: .5em;
+}
+
+@media (max-width: 1000px) {
+    main {
+        font-size: 3.2vw;
+    }
+}

@@ -1,0 +1,96 @@
+main {
+    justify-content: center;
+    align-items: center;
+}
+
+main h2 {
+    font-weight: lighter;
+    margin: 1em;
+}
+
+form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font-size: 24px;
+    background-color: #cccccc;
+    padding: 1em;
+}
+
+#birthdate {
+    margin-bottom: 1em;
+}
+
+#firstname {
+    margin-bottom: 1em;
+}
+
+#lastname {
+    margin-bottom: 1em;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-label {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+.custom-radio {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    border: .2em solid black;
+    border-radius: 50%;
+    margin: 0 1em;
+    padding: auto;
+}
+
+.custom-radio:checked {
+    background-color: black;
+}
+
+.signupdiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: .1em 0;
+    padding: .3em 0;
+}
+
+.signupdiv input {
+    width: 45%;
+    margin: auto;
+}
+
+.signupdiv label {
+    margin: auto;
+}
+
+input {
+    height: 1.6em;
+    margin-top: .5em;
+    margin-bottom: 2em;
+    font-size: 1em;
+}
+
+#signupbottom {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1000px) {
+    main h2 {
+        font-size: 5vw;
+    }
+    form {
+        font-size: 2.5vw;
+        width: 50vw;
+    }
+}

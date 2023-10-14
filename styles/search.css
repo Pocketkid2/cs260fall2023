@@ -1,0 +1,118 @@
+main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+main div {
+    margin: .1em;
+    background-color: #eeeeee;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+main h2 {
+    font-size: 1em;
+    font-weight: lighter;
+    margin-bottom: .5em;
+}
+
+#search-results table {
+    margin: 0 auto;
+}
+
+#search-results th {
+    font-size: .8em;
+    padding: .1em .5em;
+    background-color: #cccccc;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+#search-results td {
+    font-size: .6em;
+    padding: .1em .5em;
+    background-color: #ffffff;
+}
+
+#search-filter table {
+    margin: 0 auto;
+}
+
+#search-filter td {
+    background-color: #aaaaaa;
+    font-size: .6em;
+    padding: .3em;
+    text-align: left;
+}
+
+#namefilter {
+    width: auto;
+}
+
+.rangeinput {
+    width: 6em;
+    height: 1.5em;
+}
+
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hidden-checkbox {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox-icon {
+    color: #333333;
+    font-weight: bold;
+    border: .2em solid #333333;
+    border-radius: .4em;
+    margin-right: .3em;
+    padding: .2em .4em;
+    user-select: none;
+}
+
+.hidden-checkbox:checked + .checkbox-icon {
+    background-color: #333333;
+    color: white;
+}
+
+p {
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10em;
+    margin: 0 auto;
+    background-color: #bbbbbb;
+    padding: .6em;
+}
+
+form label {
+    font-size: .7em;
+    margin: .2em;
+}
+
+form input {
+    font-size: .7em;
+    margin: .2em;
+}
+
+form button {
+    font-size: .7em;
+    margin: .2em;
+}
+
+@media (max-width: 1000px) {
+    main {
+        font-size: 3.2vw;
+    }
+}
