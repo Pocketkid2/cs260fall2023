@@ -1,0 +1,51 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: auto;
+}
+
+.profile > div {
+    background-color: #dddddd;
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile h2 {
+    padding: .25em;
+    font-weight: lighter;
+}
+
+.profile ul {
+    background-color: #999999;
+    list-style: none;
+    margin-bottom: .5em;
+}
+
+.profile table {
+    background-color: #999999;
+    margin: 1em;
+}
+
+.profile p {
+    padding: .5em;
+}
+
+.profile img {
+    width: 60%;
+}
+
+.profile input {
+    margin: 1em;
+}
+
+@media (max-width: 750px) {
+    .profile {
+        width: 80%;
+    }
+    main {
+        font-size: 4.4vw;
+    }
+}
