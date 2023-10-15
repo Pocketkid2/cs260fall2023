@@ -1,7 +1,7 @@
 main div {
     display: flex;
     flex-direction: column;
-    background-color: #eeeeee;
+    background-color: #dddddd;
     margin: 1em;
 }
 

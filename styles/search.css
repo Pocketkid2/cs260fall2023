@@ -5,8 +5,10 @@ main {
 }
 
 main div {
-    margin: .1em;
-    background-color: #eeeeee;
+    margin: auto;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background-color: #dddddd;
     padding: .5em;
     display: flex;
     flex-direction: column;
@@ -25,7 +27,7 @@ main h2 {
 #search-results th {
     font-size: .8em;
     padding: .1em .5em;
-    background-color: #cccccc;
+    background-color: #bbbbbb;
     font-weight: lighter;
     cursor: pointer;
 }
