@@ -65,3 +65,11 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 * Created the basic HTML pages and populated them with the necessary forms, and some placeholder data where database accessing will occur
 * Deployed startup to startup.filmhub.click and simon (with some small modifications) to simon.filmhub.click
+
+## Startup CSS Deliverables
+
+* Uploaded Simon CSS to simon.filmhub.click and checked out its code so I could incorporate ideas from that into my startup
+* Revised the HTML structure of the website to better accomodate the structure and CSS I need
+* Added a global CSS file for the entire site, that sets up the header and footer as constant and adaptive, with a center content that can scroll if it's taller than what's available
+* Added CSS files for each individual page that render the main center content
+* Got started on a tiny bit of JavaScript, what it does is highlight the navigation button corresponding to the page, like a tab, so it shows that instead of a page header title, which looks a lot nicer and is more intuitive
