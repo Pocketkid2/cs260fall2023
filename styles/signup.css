@@ -1,6 +1,15 @@
 main {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    margin-top: 5em;
 }
 
 main h2 {
