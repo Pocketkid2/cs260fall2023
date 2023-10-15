@@ -1,0 +1,63 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    background-color: #dddddd;
+    margin: 1em;
+    width: 600px;
+    align-items: center;
+}
+main h2 {
+    font-weight: lighter;
+}
+
+main ul {
+    list-style: none;
+    background-color: #bbbbbb;
+    width: 80%;
+    margin: .5em;
+}
+
+dl {
+    text-align: left;
+    background: #bbbbbb;
+    width: 80%;
+    padding: .5em;
+    margin: .5em;
+    margin-bottom: 0;
+}
+
+dt {
+    font-weight: bold;
+    font-size: .7em;
+}
+
+dd {
+    margin-left: 1em;
+    margin-bottom: .5em;
+    font-size: .5em;
+    font-style: italic;
+}
+
+form {
+    margin-top: 0;
+    margin-bottom: .5em;
+}
+
+form input, form button {
+    padding: .3em;
+}
+
+@media (max-width: 750px) {
+    main > div {
+        width: 80%;
+    }
+    main {
+        font-size: 4.4vw;
+    }
+}
