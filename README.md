@@ -73,3 +73,7 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Added a global CSS file for the entire site, that sets up the header and footer as constant and adaptive, with a center content that can scroll if it's taller than what's available
 * Added CSS files for each individual page that render the main center content
 * Got started on a tiny bit of JavaScript, what it does is highlight the navigation button corresponding to the page, like a tab, so it shows that instead of a page header title, which looks a lot nicer and is more intuitive
+
+## Startup JavaScript Deliverables
+
+* Application interaction logic - Search page now functions correctly! You can search a film title, or franchise name, and see every film on IMDB with those words in the title. You can also click the column headers to sort both directions, and play with the filter inputs to see things change!
