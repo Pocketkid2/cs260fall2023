@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/search.css" />
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/search.js" defer></script>
 </head>
 
 <body>
@@ -29,9 +30,9 @@
     <main>
         <div id="search-bar">
             <h2>Search</h2>
-            <form method="get" action="">
-                <input type="text" id="name" placeholder="Movie title" />
-                <button type="submit">Search</button>
+            <form onsubmit="search(event)">
+                <input type="text" id="search-box" placeholder="Movie title" />
+                <button type="submit" id="search-button">Search</button>
             </form>
         </div>
         <div id="search-filter">
@@ -40,27 +41,27 @@
                 <tr>
                     <td><label for="year">Year</label></td>
                     <td>
-                        <input class="rangeinput" type="text" name="minyear" placeholder="min">
-                        <input class="rangeinput" type="text" name="maxyear" placeholder="max">
+                        <input class="range-input" type="text" id="min-year" placeholder="min">
+                        <input class="range-input" type="text" id="max-year" placeholder="max">
                     </td>
                 </tr>
                 <tr>
                     <td><label for="rating">MPAA Rating</label></td>
                     <td>
                         <label class="custom-checkbox">
-                            <input type="checkbox" class="hidden-checkbox">
+                            <input type="checkbox" class="hidden-checkbox" id="G" checked>
                             <span class="checkbox-icon">G</span>
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" class="hidden-checkbox">
+                            <input type="checkbox" class="hidden-checkbox" id="PG" checked>
                             <span class="checkbox-icon">PG</span>
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" class="hidden-checkbox">
+                            <input type="checkbox" class="hidden-checkbox" id="PG-13" checked>
                             <span class="checkbox-icon">PG-13</span>
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" class="hidden-checkbox">
+                            <input type="checkbox" class="hidden-checkbox" id="R" checked>
                             <span class="checkbox-icon">R</span>
                         </label>
                     </td>
@@ -68,156 +69,14 @@
                 <tr>
                     <td><label for="runtime">Runtime</label></td>
                     <td>
-                        <input class="rangeinput" type="text" name="mintime" placeholder="min">
-                        <input class="rangeinput" type="text" name="maxtime" placeholder="max">
+                        <input class="range-input" type="text" id="min-runtime" placeholder="min">
+                        <input class="range-input" type="text" id="max-runtime" placeholder="max">
                     </td>
-                </tr>
-                <tr>
-                    <td><label for="director">Director</label></td>
-                    <td><input id="namefilter" type="text" name="director" placeholder="name"></td>
                 </tr>
             </table>
         </div>
         <div id="search-results">
-            <h2>Results</h2>
-            <table>
-                <tr>
-                    <th id="results-title">
-                        <p>Film Title</p>
-                    </th>
-                    <th id="results-year">
-                        <p>Year</p>
-                    </th>
-                    <th id="results-rating">
-                        <p>Rating</p>
-                    </th>
-                    <th id="results-runtime">
-                        <p>Runtime</p>
-                    </th>
-                    <th id="results-director">
-                        <p>Director</p>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Jurassic Park</p>
-                    </td>
-                    <td>
-                        <p>1993</p>
-                    </td>
-                    <td>
-                        <p>PG-13</p>
-                    </td>
-                    <td>
-                        <p>127 minutes</p>
-                    </td>
-                    <td>
-                        <p>Steven Spielberg</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Apollo 13</p>
-                    </td>
-                    <td>
-                        <p>1995</p>
-                    </td>
-                    <td>
-                        <p>PG</p>
-                    </td>
-                    <td>
-                        <p>140 minutes</p>
-                    </td>
-                    <td>
-                        <p>Ron Howard</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>The Dark Knight</p>
-                    </td>
-                    <td>
-                        <p>2008</p>
-                    </td>
-                    <td>
-                        <p>PG-13</p>
-                    </td>
-                    <td>
-                        <p>152 minutes</p>
-                    </td>
-                    <td>
-                        <p>Christopher Nolan</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Ferris Bueller's Day Off</p>
-                    </td>
-                    <td>
-                        <p>1986</p>
-                    </td>
-                    <td>
-                        <p>PG-13</p>
-                    </td>
-                    <td>
-                        <p>103 minutes</p>
-                    </td>
-                    <td>
-                        <p>John Hughes</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>The Abyss</p>
-                    </td>
-                    <td>
-                        <p>1989</p>
-                    </td>
-                    <td>
-                        <p>PG-13</p>
-                    </td>
-                    <td>
-                        <p>140 minutes</p>
-                    </td>
-                    <td>
-                        <p>James Cameron</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Mad Max: Fury Road</p>
-                    </td>
-                    <td>
-                        <p>2015</p>
-                    </td>
-                    <td>
-                        <p>R</p>
-                    </td>
-                    <td>
-                        <p>120 minutes</p>
-                    </td>
-                    <td>
-                        <p>George Miller</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Gravity</p>
-                    </td>
-                    <td>
-                        <p>2013</p>
-                    </td>
-                    <td>
-                        <p>PG-13</p>
-                    </td>
-                    <td>
-                        <p>91 minutes</p>
-                    </td>
-                    <td>
-                        <p>Alfonso Cuarón</p>
-                    </td>
-                </tr>
-            </table>
+            <h2 id="search-results-label">Results</h2>
         </div>
 
     </main>
