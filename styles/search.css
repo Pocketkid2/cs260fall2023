@@ -113,6 +113,10 @@ form button {
     margin: .2em;
 }
 
+tr td:first-child {
+    text-align: left;
+}
+
 @media (max-width: 1000px) {
     main {
         font-size: 3.2vw;
