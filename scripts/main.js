@@ -1,5 +1,3 @@
-const current_user_key = "current_user";
-
 // Highlight the tab at the top corresponding to the page we've selected
 function highlight_current_page_tab() {
     
@@ -15,7 +13,7 @@ highlight_current_page_tab();
 
 // Remove the navigation tabs relating to the pages that are available or unavailable
 function remove_unusable_navigation_tabs() {
-    const current_username = localStorage.getItem(current_user_key);
+    const current_username = localStorage.getItem("current_user");
 
     if (current_username === null) {
 
@@ -33,14 +31,17 @@ function remove_unusable_navigation_tabs() {
         // Add sign out tab
         var signout_li = document.createElement("li");
         var signout_a = document.createElement("a");
+        signout_a.innerHTML = "Signout";
         signout_a.setAttribute("id", "header-nav-bar-signout");
         signout_a.addEventListener("click", function(event) {
             event.preventDefault();
-            localStorage.removeItem(current_user_key);
+            localStorage.removeItem("current_user");
             location.reload(true);
         });
         signout_li.appendChild(signout_a);
         nav_list.appendChild(signout_li);
+
+        //location.reload();
     }
 }
 
