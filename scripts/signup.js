@@ -32,10 +32,6 @@ function read_gender(elements) {
 
 function signup(event) {
 
-    
-    
-    localStorage.clear();
-
     const first_name = document.getElementById("firstname").value;
     const last_name = document.getElementById("lastname").value;
     const birth_date = document.getElementById("birthdate").value;
@@ -109,5 +105,5 @@ function signup(event) {
     }
 
     localStorage.setItem(available_users_key, JSON.stringify(available_users));
-    localStorage.setItem(current_user_key, JSON.stringify(user_object));
+    localStorage.setItem(current_user_key, JSON.stringify(user_object.username));
 }
