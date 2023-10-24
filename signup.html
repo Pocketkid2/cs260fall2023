@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/signup.css" />
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/signup.js" defer></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
     <main>
         <div>
             <h2>Enter your information</h2>
-            <form>
+            <form onsubmit="signup(event)" action="profile.html">
                 <input type="text" id="firstname" placeholder="First name" />
 
                 <input type="text" id="lastname" placeholder="Last name" />
@@ -39,26 +40,30 @@
 
                 <div class="radio-group">
                     <label class="radio-label">
-                        <input type="radio" name="customRadio" class="custom-radio">
+                        <input type="radio" name="customRadio" class="custom-radio" value="male">
                         Male
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="customRadio" class="custom-radio">
+                        <input type="radio" name="customRadio" class="custom-radio" value="female">
                         Female
                     </label>
                 </div>
 
-                <div class="signupdiv">
-                    <input type="text" placeholder="Choose a username" />
-                    <input type="text" placeholder="Confirm username" />
-                </div>
+                <p>Usernames must be at least 6 characters and can only have letters, numbers, and underscores</p>
 
                 <div class="signupdiv">
-                    <input type="password" placeholder="Choose a password" />
-                    <input type="password" placeholder="Confirm password" />
+                    <input type="text" id="username1" placeholder="Choose a username" />
+                    <input type="text" id="username2" placeholder="Confirm username" />
                 </div>
 
-                <input id="signupbutton" type="submit" value="Signup" />
+                <p>Passwords must be at least 8 characters and may not have spaces.</p>
+
+                <div class="signupdiv">
+                    <input type="password" id="password1" placeholder="Choose a password" />
+                    <input type="password" id="password2" placeholder="Confirm password" />
+                </div>
+
+                <input id="signup-button" type="submit" value="Signup" />
             </form>
         </div>
     </main>
