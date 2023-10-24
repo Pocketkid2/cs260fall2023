@@ -94,6 +94,11 @@ input {
     margin-bottom: 0;
 }
 
+form p {
+    font-size: .8em;
+    margin-top: 2em;
+}
+
 @media (max-width: 1000px) {
     main h2 {
         font-size: 5vw;
