@@ -1,6 +1,3 @@
-const available_users_key = "available_users";
-const current_user_key = "current_user";
-
 function is_valid_name(input) {
     const regex = /^[A-Za-z\s-]+$/;
     return input.length > 0 && regex.test(input);
@@ -87,7 +84,7 @@ function signup(event) {
         password: password1
     }
 
-    var available_users = localStorage.getItem(available_users_key);
+    var available_users = localStorage.getItem("available_users");
 
     if (available_users === null) {
         available_users = [user_object];
@@ -104,6 +101,6 @@ function signup(event) {
         available_users.push(user_object);
     }
 
-    localStorage.setItem(available_users_key, JSON.stringify(available_users));
-    localStorage.setItem(current_user_key, JSON.stringify(user_object.username));
+    localStorage.setItem("available_users", JSON.stringify(available_users));
+    localStorage.setItem("current_user", JSON.stringify(user_object.username));
 }
