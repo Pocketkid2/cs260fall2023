@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/login.css" />
         <script src="scripts/main.js" defer></script>
+        <script src="scripts/login.js" defer></script>
     </head>
     <body>
         <header>
@@ -25,7 +26,7 @@
             <img src="images/film-movie-icon.webp">
         </header>
         <main>
-            <form>
+            <form onsubmit="login(event)" action="profile.html">
                 <label for="username">Enter your username:</label>
                 <input type="text" id="username" />
                 <label for="password">Enter your password:</label>
