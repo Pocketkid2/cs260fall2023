@@ -77,3 +77,4 @@ The one-stop shop for film nerds. You can find information about movies, read re
 ## Startup JavaScript Deliverables
 
 * Application interaction logic - Search page now functions correctly! You can search a film title, or franchise name, and see every film on IMDB with those words in the title. You can also click the column headers to sort both directions, and play with the filter inputs to see things change!
+* Future login and database data - Signup and login pages now work! Signup page checks to make sure the fields are filled correctly, and automatically logs you in when it is correct! The login page also logs you in. Both pages take you directly to your profile when you log in. The data is stored locally so the login and database logic will extract that to a backend.
