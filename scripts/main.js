@@ -1,16 +1,3 @@
-// Highlight the tab at the top corresponding to the page we've selected
-function highlight_current_page_tab() {
-    
-    const path = window.location.pathname;
-    const page_name = path.split('/').pop().replace('.html', '');
-    const element = document.getElementById(page_name);
-    if (element) {
-        element.style.backgroundColor = "#AAAAAA"
-    }
-}
-
-highlight_current_page_tab();
-
 // Remove the navigation tabs relating to the pages that are available or unavailable
 function remove_unusable_navigation_tabs() {
     const current_username = localStorage.getItem("current_user");
@@ -36,13 +23,28 @@ function remove_unusable_navigation_tabs() {
         signout_a.addEventListener("click", function(event) {
             event.preventDefault();
             localStorage.removeItem("current_user");
-            location.reload(true);
+            if (window.location.pathname.includes("profile.html")) {
+                location.replace("index.html");
+            } else {
+                location.reload(true);
+            }
         });
         signout_li.appendChild(signout_a);
         nav_list.appendChild(signout_li);
-
-        //location.reload();
     }
 }
 
 remove_unusable_navigation_tabs();
+
+// Highlight the tab at the top corresponding to the page we've selected
+function highlight_current_page_tab() {
+    
+    const path = window.location.pathname;
+    const page_name = path.split('/').pop().split('.')[0];
+    const element = document.getElementById("header-nav-bar-" + page_name);
+    if (element) {
+        element.style.backgroundColor = "#AAAAAA"
+    }
+}
+
+highlight_current_page_tab();
