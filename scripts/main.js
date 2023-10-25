@@ -22,7 +22,7 @@ function remove_unusable_navigation_tabs() {
 
     } else {
 
-        const nav_list = document.getElementById("header-nav-bar-index").parentElement;
+        const nav_list = document.getElementById("header-nav-bar-list");
 
         // Remove login and signup
         document.getElementById("header-nav-bar-login").parentElement.remove();
