@@ -26,13 +26,14 @@
             <img src="images/film-movie-icon.webp">
         </header>
         <main>
-            <form onsubmit="login(event)" action="profile.html">
-                <label for="username">Enter your username:</label>
-                <input type="text" id="username" />
-                <label for="password">Enter your password:</label>
-                <input type="password" id="password" />
-                <input type="submit" value="Login" />
-            </form>
+            <div>
+                <h2>Enter your information</h2>
+                <form onsubmit="login(event)" action="profile.html">
+                    <input type="text" id="username" placeholder="username"/>
+                    <input type="password" id="password" placeholder="password"/>
+                    <input type="submit" value="Login" />
+                </form>
+            </div>
         </main>
         <footer>
             <span class="text-reset">Adam Taylor</span>
