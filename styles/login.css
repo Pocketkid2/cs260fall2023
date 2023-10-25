@@ -1,7 +1,19 @@
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+main h2 {
+    font-weight: lighter;
+    margin: 1em;
 }
 
 form {
@@ -16,12 +28,14 @@ form {
 
 input {
     height: 2em;
-    margin-top: .5em;
-    margin-bottom: 2em;
+    margin: .5em;
     font-size: 1em;
 }
 
 @media (max-width: 1000px) {
+    main h2 {
+        font-size: 5vw;
+    }
     form {
         font-size: 2.5vw;
         width: 50vw;
