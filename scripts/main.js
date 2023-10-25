@@ -4,8 +4,9 @@ function remove_unusable_navigation_tabs() {
 
     if (current_username === null) {
 
-        // Remove profile tab
-        const profile_button = document.getElementById("header-nav-bar-profile").parentElement.remove();
+        // Remove profile and chat tab
+        document.getElementById("header-nav-bar-profile").parentElement.remove();
+        document.getElementById("header-nav-bar-chat").parentElement.remove();
 
     } else {
 
