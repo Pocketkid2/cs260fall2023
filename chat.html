@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/chat.css" />
         <script src="scripts/main.js" defer></script>
+        <script src="scripts/chat.js" defer></script>
     </head>
     <body>
         <header>
@@ -27,23 +28,14 @@
         <main>
             <div>
                 <h2>Active Users</h2>
-                <ul>
-                    <li>Adam</li>
-                    <li>Joseph</li>
-                    <li>David</li>
+                <ul id="active-user-list">
                 </ul>
             </div>
             <div>
                 <h2>Chat Messages</h2>
-                <dl>
-                    <dt>Adam</dt>
-                    <dd>Hello, world</dd>
-                    <dt>Joseph</dt>
-                    <dd>The quick brown fox</dd>
-                    <dt>David</dt>
-                    <dd>Jumps over the lazy dog</dd>
+                <dl id="chat-messages">
                 </dl>
-                <form method="get" action="">
+                <form onsubmit="send_chat_message(event)" >
                     <input type="text" id="message" placeholder="Type message here" />
                     <button type="submit">Send</button>
                 </form>
