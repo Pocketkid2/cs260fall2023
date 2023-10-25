@@ -23,6 +23,10 @@ main ul {
     margin: .5em;
 }
 
+main li {
+    padding: .3em;
+}
+
 dl {
     text-align: left;
     background: #bbbbbb;
@@ -30,6 +34,8 @@ dl {
     padding: .5em;
     margin: .5em;
     margin-bottom: 0;
+    max-height: 50vh;
+    overflow: auto;
 }
 
 dt {
