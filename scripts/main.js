@@ -24,7 +24,7 @@ function remove_unusable_navigation_tabs() {
         signout_a.addEventListener("click", function(event) {
             event.preventDefault();
             localStorage.removeItem("current_user");
-            if (window.location.pathname.includes("profile.html")) {
+            if (window.location.pathname.includes("profile.html") || window.location.pathname.includes("chat.html")) {
                 location.replace("index.html");
             } else {
                 location.reload(true);
