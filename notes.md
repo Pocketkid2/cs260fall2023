@@ -18,7 +18,7 @@ The Simon CSS code that I published to my server tells the webpage to not displa
 
 ### Midterm Notes:Here's an ordered list from 1 to 34 with periods:
 
-<span> - default property of inline
+span has a default property of inline
 
 background-color CSS rule
 
