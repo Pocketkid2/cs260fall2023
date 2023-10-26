@@ -75,13 +75,16 @@ function signup(event) {
         return;
     }
 
+    const today = new Date();
+
     const user_object = {
         first_name: first_name,
         last_name: last_name,
         birth_date: birth_date,
         gender: gender,
         username: username1,
-        password: password1
+        password: password1,
+        creation_date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
     }
 
     var available_users = localStorage.getItem("available_users");
@@ -102,5 +105,5 @@ function signup(event) {
     }
 
     localStorage.setItem("available_users", JSON.stringify(available_users));
-    localStorage.setItem("current_user", JSON.stringify(user_object.username));
+    localStorage.setItem("current_user", user_object.username);
 }
