@@ -1,5 +1,4 @@
 function login(event) {
-    console.log("login event happened");
     var available_users = localStorage.getItem("available_users");
     if (available_users === null) {
         event.preventDefault();
@@ -28,5 +27,4 @@ function login(event) {
 
     event.preventDefault();
     alert("Incorrect username");
-
 }
