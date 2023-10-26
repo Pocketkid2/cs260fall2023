@@ -15,3 +15,22 @@ You can put the full size image URL, and then use just width or height to resize
 ### Simon CSS
 
 The Simon CSS code that I published to my server tells the webpage to not display the header and footer if the height gets smaller than a threshold. I want to do something similar with my startup so that if the width gets smaller than a threshold, the header and footer size shrink as a function of width as opposed to being a constant size like they currently are.
+
+### Midterm Notes:Here's an ordered list from 1 to 34 with periods:
+
+<span> - default property of inline
+
+background-color CSS rule
+
+When doing image with hyperlink, use a tag w/ href around img tag w/ src
+
+CSS box model = content -> padding -> border -> margin
+
+element.style.color = "green" for setting things to green
+
+script tag for javascript, link tag for css
+
+A record can point to other A record and IP
+
+HTTPS requires certificate
+
