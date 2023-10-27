@@ -1,24 +1,38 @@
-main div {
+main {
     display: flex;
     flex-direction: column;
-    background-color: #dddddd;
-    margin: 1em;
+    align-content: center;
+}
+
+main div {
+    background-color: #bbbbbb;
+    margin: 1em auto;
+    padding: .5em;
+}
+
+main h2 {
+    font-weight: lighter;
+    font-size: 1.5em;
+    padding-bottom: .5em;
 }
 
 main ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
 }
 
-main h2 {
-    font-weight: lighter;
-    margin: .5em;
+main li {
+    padding: .5em 1em;
 }
 
 main img {
     width: 8em;
-    margin: .5em;
+    height: 12em;
+}
+
+main p {
+    font-size: .8em;
 }
 
 @media (max-width: 1000px) {
