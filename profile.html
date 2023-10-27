@@ -1,68 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Film Hub - Profile</title>
-        <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="styles/main.css" />
-        <link rel="stylesheet" href="styles/profile.css" />
-        <script src="scripts/main.js" defer></script>
-        <script src="scripts/profile.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <img src="images/video-roll-icon.webp">
-            <nav>
-                <ul id="header-nav-bar-list">
-                    <li><a id="header-nav-bar-index" href="index.html">Home</a></li>
-                    <li><a id="header-nav-bar-search" href="search.html">Search</a></li>
-                    <li><a id="header-nav-bar-chat" href="chat.html">Chat</a></li>
-                    <li><a id="header-nav-bar-profile" href="profile.html">Profile</a></li>
-                    <li><a id="header-nav-bar-login" href="login.html">Login</a></li>
-                    <li><a id="header-nav-bar-signup" href="signup.html">Signup</a></li>
-                </ul>
-            </nav>
-            <img src="images/film-movie-icon.webp">
-        </header>
-        <main>
-            <div class="profile">
-                <div class="stats">
-                    <h2>Profile Info</h2>
-                    <table>
-                        <tr>
-                            <th><p>Real name</p></th>
-                            <td><p id="profile-name"></p></td>
-                        </tr>
-                        <tr>
-                            <th><p>Username</p></th>
-                            <td><p id="profile-username"></p></td>
-                        </tr>
-                        <tr>
-                            <th><p>Birthday</p></th>
-                            <td><p id="profile-birthdate"></p></td>
-                        </tr>
-                        <tr>
-                            <th><p>Account creation date</p></th>
-                            <td><p id="profile-creation-date"></p></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="favorites">
-                    <h2>Favorites</h2>
-                    <ul id="favorites-list">
-                    </ul>
-                </div>
-                <div class="watchlist">
-                    <h2>Watchlist</h2>
-                    <ul id="watch-list">
-                    </ul>
-                </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Hub - Profile</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/profile.css" />
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/profile.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/video-roll-icon.webp">
+        <nav>
+            <ul id="header-nav-bar-list">
+                <li><a id="header-nav-bar-index" href="index.html">Home</a></li>
+                <li><a id="header-nav-bar-search" href="search.html">Search</a></li>
+                <li><a id="header-nav-bar-chat" href="chat.html">Chat</a></li>
+                <li><a id="header-nav-bar-profile" href="profile.html">Profile</a></li>
+                <li><a id="header-nav-bar-login" href="login.html">Login</a></li>
+                <li><a id="header-nav-bar-signup" href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+        <img src="images/film-movie-icon.webp">
+    </header>
+    <main>
+        <div class="profile">
+            <div class="stats">
+                <h2>Profile Info</h2>
+                <table>
+                    <tr>
+                        <th>
+                            <p>Real name</p>
+                        </th>
+                        <td>
+                            <p id="profile-name"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>Username</p>
+                        </th>
+                        <td>
+                            <p id="profile-username"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>Birthday</p>
+                        </th>
+                        <td>
+                            <p id="profile-birthdate"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>Account creation date</p>
+                        </th>
+                        <td>
+                            <p id="profile-creation-date"></p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-        </main>
-        <footer>
-            <span class="text-reset">Adam Taylor</span>
-            <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png" alt="GitHub Repository"></a>
-        </footer>
-    </body>
+            <div class="favorites">
+                <h2>Favorites</h2>
+                <ul id="favorites-list">
+                </ul>
+            </div>
+            <div class="watchlist">
+                <h2>Watchlist</h2>
+                <ul id="watch-list">
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <span class="text-reset">Adam Taylor</span>
+        <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png"
+                alt="GitHub Repository"></a>
+    </footer>
+</body>
+
 </html>

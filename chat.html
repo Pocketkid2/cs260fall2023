@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Film Hub - Chat</title>
-        <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="styles/main.css" />
-        <link rel="stylesheet" href="styles/chat.css" />
-        <script src="scripts/main.js" defer></script>
-        <script src="scripts/chat.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <img src="images/video-roll-icon.webp">
-            <nav>
-                <ul id="header-nav-bar-list">
-                    <li><a id="header-nav-bar-index" href="index.html">Home</a></li>
-                    <li><a id="header-nav-bar-search" href="search.html">Search</a></li>
-                    <li><a id="header-nav-bar-chat" href="chat.html">Chat</a></li>
-                    <li><a id="header-nav-bar-profile" href="profile.html">Profile</a></li>
-                    <li><a id="header-nav-bar-login" href="login.html">Login</a></li>
-                    <li><a id="header-nav-bar-signup" href="signup.html">Signup</a></li>
-                </ul>
-            </nav>
-            <img src="images/film-movie-icon.webp">
-        </header>
-        <main>
-            <div>
-                <h2>Active Users</h2>
-                <ul id="active-user-list">
-                </ul>
-            </div>
-            <div>
-                <h2>Chat Messages</h2>
-                <dl id="chat-messages">
-                </dl>
-                <form onsubmit="send_chat_message(event)" >
-                    <input type="text" id="message" placeholder="Type message here" />
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-        </main>
-        <footer>
-            <span class="text-reset">Adam Taylor</span>
-            <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png" alt="GitHub Repository"></a>
-        </footer>
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Hub - Chat</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/chat.css" />
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/chat.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/video-roll-icon.webp">
+        <nav>
+            <ul id="header-nav-bar-list">
+                <li><a id="header-nav-bar-index" href="index.html">Home</a></li>
+                <li><a id="header-nav-bar-search" href="search.html">Search</a></li>
+                <li><a id="header-nav-bar-chat" href="chat.html">Chat</a></li>
+                <li><a id="header-nav-bar-profile" href="profile.html">Profile</a></li>
+                <li><a id="header-nav-bar-login" href="login.html">Login</a></li>
+                <li><a id="header-nav-bar-signup" href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+        <img src="images/film-movie-icon.webp">
+    </header>
+    <main>
+        <div>
+            <h2>Active Users</h2>
+            <ul id="active-user-list">
+            </ul>
+        </div>
+        <div>
+            <h2>Chat Messages</h2>
+            <dl id="chat-messages">
+            </dl>
+            <form onsubmit="send_chat_message(event)">
+                <input type="text" id="message" placeholder="Type message here" />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <span class="text-reset">Adam Taylor</span>
+        <a href="https://github.com/pocketkid2/startup"><img src="images/github-mark-white.png"
+                alt="GitHub Repository"></a>
+    </footer>
+</body>
+
 </html>
