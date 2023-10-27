@@ -17,11 +17,11 @@ function remove_unusable_navigation_tabs() {
         document.getElementById("header-nav-bar-signup").parentElement.remove();
 
         // Add sign out tab
-        var signout_li = document.createElement("li");
-        var signout_a = document.createElement("a");
-        signout_a.innerHTML = "Signout";
-        signout_a.setAttribute("id", "header-nav-bar-signout");
-        signout_a.addEventListener("click", function(event) {
+        var logout_li = document.createElement("li");
+        var logout_a = document.createElement("a");
+        logout_a.innerHTML = "Logout";
+        logout_a.setAttribute("id", "header-nav-bar-logout");
+        logout_a.addEventListener("click", function(event) {
             event.preventDefault();
             localStorage.removeItem("current_user");
             if (window.location.pathname.includes("profile.html") || window.location.pathname.includes("chat.html")) {
@@ -30,8 +30,8 @@ function remove_unusable_navigation_tabs() {
                 location.reload(true);
             }
         });
-        signout_li.appendChild(signout_a);
-        nav_list.appendChild(signout_li);
+        logout_li.appendChild(logout_a);
+        nav_list.appendChild(logout_li);
     }
 }
 
