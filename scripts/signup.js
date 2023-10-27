@@ -84,7 +84,9 @@ function signup(event) {
         gender: gender,
         username: username1,
         password: password1,
-        creation_date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+        creation_date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
+        favorites_list: [],
+        watch_list: []
     }
 
     var available_users = localStorage.getItem("available_users");
