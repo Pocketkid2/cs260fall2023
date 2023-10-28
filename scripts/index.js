@@ -28,8 +28,6 @@ function load_images(film_list, list_id, field_to_display, prefix) {
             }
         }).then((data) => {
 
-            console.log(data);
-
             // Create div
             var list_item_element = document.createElement("li");
 
