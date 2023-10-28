@@ -135,6 +135,8 @@ function update_table(objects) {
     search_results_table = document.createElement("table"); // Create new table
     search_results_div.appendChild(search_results_table);
 
+    // ADD TABLE HEADERS
+
     const header_row = document.createElement("tr");        // Create new row for header
     search_results_table.appendChild(header_row);           // Add row to table
     columns.forEach((column) => {                           // Loop through each column
@@ -145,6 +147,16 @@ function update_table(objects) {
         column_header.appendChild(text_node);                       // Apply the label to the column header
     });
 
+    // Add a column for buttons if user logged in
+    if (localStorage.getItem("current_user") != null) {
+        const header = document.createElement("th");
+        header_row.appendChild(header);
+        const text = document.createTextNode("Add to");
+        header.appendChild(text);
+    }
+
+    // ADD TABLE ROWS
+
     filtered_data.forEach((object) => {
         const data_row = document.createElement("tr");      // Create new row for data
         search_results_table.appendChild(data_row);         // Add row to table
@@ -154,8 +166,87 @@ function update_table(objects) {
             const text_node = document.createTextNode(object[column_name]);
             data_cell.appendChild(text_node);
         });
+
+        // Add buttons if user logged in
+        const logged_in_user = localStorage.getItem("current_user");
+        if (logged_in_user != null) {
+            const button_cell = document.createElement("td");
+            button_cell.style.width = "10em";
+
+            const movie_string = `${object["Title"]} (${object["Year"]})`;
+
+            var user_data = localStorage.getItem("available_users");
+            var favorites = null;
+            var watchlist = null;
+            if (user_data != null) {
+                user_data = JSON.parse(user_data);
+                for (i = 0; i < user_data.length; i++) {
+                    if (user_data[i]["username"] === logged_in_user) {
+                        favorites = user_data[i]["favorites_list"];
+                        watchlist = user_data[i]["watch_list"];
+                    }
+                }
+            }
+
+            if (favorites == null || !favorites.includes(movie_string)) {
+                const favorites_button = document.createElement("button");
+                favorites_button.innerHTML = "Favorites";
+                favorites_button.classList.add("favorites-button");
+                favorites_button.addEventListener("click", function() {
+                    if (update_user_object(logged_in_user, "favorites_list", movie_string)) {
+                        // If success, remove button
+                        this.remove();
+                    } else {
+                        alert("Error: Could not add film to list. Please check console for errors.");
+                    }
+                });
+                button_cell.appendChild(favorites_button);
+            }
+
+            if (watchlist == null || !watchlist.includes(movie_string)) {
+                const watchlist_button = document.createElement("button");
+                watchlist_button.innerHTML = "Watchlist";
+                watchlist_button.classList.add("watchlist-button");
+                watchlist_button.addEventListener("click", function() {
+                    if (update_user_object(logged_in_user, "watch_list", movie_string)) {
+                        // If success, remove button
+                        this.remove();
+                    } else {
+                        alert("Error: Could not add film to list. Please check console for errors.");
+                    }
+                });
+                button_cell.appendChild(watchlist_button);
+            }
+
+            data_row.appendChild(button_cell);
+        }
     });
 
+}
+
+function update_user_object(username, list, movie_string) {
+    var user_data = localStorage.getItem("available_users");
+    if (user_data === null) {
+        console.log("Error: available_users is null");
+        return false;
+    }
+    user_data = JSON.parse(user_data);
+    for (i = 0; i < user_data.length; i++) {
+        if (user_data[i]["username"] === username) {
+            // Update list
+            for (j = 0; j < user_data[i][list].length; j++) {
+                if (user_data[i][list][j] === movie_string) {
+                    console.log("Warning: Trying to add movie already on the list");
+                    return false;
+                }
+            }
+            user_data[i][list].push(movie_string);
+            localStorage.setItem("available_users", JSON.stringify(user_data));
+            return true;
+        }
+    }
+    console.log("Warning: Could not find user with username " + username);
+    return false;
 }
 
 // Sorts the data and redraws the table
