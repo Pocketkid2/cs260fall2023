@@ -18,27 +18,21 @@
     font-weight: lighter;
 }
 
-.profile ul {
-    background-color: #999999;
-    list-style: none;
-    margin-bottom: .5em;
-}
-
 .profile table {
     background-color: #999999;
-    margin: 1em;
+    margin: .5em;
 }
 
 .profile p {
     padding: .5em;
+    font-size: .8em;
 }
 
-.profile img {
-    width: 60%;
-}
-
-.profile input {
-    margin: 1em;
+table button {
+    margin: .5em;
+    font-size: .7em;
+    background-color: #666666;
+    width: 1.4em;
 }
 
 @media (max-width: 750px) {
