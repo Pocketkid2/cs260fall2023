@@ -47,6 +47,70 @@ function load_profile_info() {
 
     var profile_creation_element = document.getElementById("profile-creation-date");
     profile_creation_element.innerText = custom_date_formatting(user_object["creation_date"]);
+
+    // Load favorites
+    var favorites_list_label = document.getElementById("favorites-list-label");
+    favorites_list_label.innerText = `Favorites (${user_object["favorites_list"].length})`;
+
+    var favorites_list = document.getElementById("favorites-list");
+    for (i = 0; i < user_object["favorites_list"].length; i++) {
+        var table_row = document.createElement("tr");
+        var movie_cell = document.createElement("td");
+        var button_cell = document.createElement("td");
+
+        var movie_text = document.createElement("p");
+        const movie_string = user_object["favorites_list"][i];
+        movie_text.innerText = movie_string;
+        table_row.id = movie_string;
+
+        var button_element = document.createElement("button");
+        button_element.innerText = "X";
+        button_element.value = movie_string;
+        button_element.addEventListener("click", function() {
+            user_object["favorites_list"] = user_object["favorites_list"].filter(item => item !== this.value);
+            favorites_list_label.innerText = `Favorites (${user_object["favorites_list"].length})`;
+            localStorage.setItem("available_users", JSON.stringify(available_users));
+            document.getElementById(movie_string).remove();
+        });
+
+        movie_cell.appendChild(movie_text);
+        button_cell.appendChild(button_element);
+        table_row.appendChild(movie_cell);
+        table_row.appendChild(button_cell);
+        favorites_list.appendChild(table_row);
+    }
+
+    // Load watchlist
+    var watch_list_label = document.getElementById("watch-list-label");
+    watch_list_label.innerText = `Watchlist (${user_object["watch_list"].length})`;
+
+    var watch_list = document.getElementById("watch-list");
+    for (i = 0; i < user_object["watch_list"].length; i++) {
+        var table_row = document.createElement("tr");
+        var movie_cell = document.createElement("td");
+        var button_cell = document.createElement("td");
+
+        var movie_text = document.createElement("p");
+        const movie_string = user_object["watch_list"][i];
+        movie_text.innerText = movie_string;
+        table_row.id = movie_string;
+
+        var button_element = document.createElement("button");
+        button_element.innerText = "X";
+        button_element.value = movie_string;
+        button_element.addEventListener("click", function() {
+            user_object["watch_list"] = user_object["watch_list"].filter(item => item !== this.value);
+            watch_list_label.innerText = `Watchlist (${user_object["watch_list"].length})`;
+            localStorage.setItem("available_users", JSON.stringify(available_users));
+            document.getElementById(movie_string).remove();
+        });
+
+        movie_cell.appendChild(movie_text);
+        button_cell.appendChild(button_element);
+        table_row.appendChild(movie_cell);
+        table_row.appendChild(button_cell);
+        watch_list.appendChild(table_row);
+    }
 }
 
 load_profile_info();
