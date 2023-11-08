@@ -8,27 +8,27 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 ### Home Page Rough Sketch
 
-![Home Page Rough Sketch](images/StartupSketchHomePage.png)
+![Home Page Rough Sketch](public/images/StartupSketchHomePage.png)
 
 ### Search Page Rough Sketch
 
-![Search Page Rough Sketch](images/StartupSketchSearchPage.png)
+![Search Page Rough Sketch](public/images/StartupSketchSearchPage.png)
 
 ### Chat Page Rough Sketch
 
-![Chat Page Rough Sketch](images/StartupSketchChatPage.png)
+![Chat Page Rough Sketch](public/images/StartupSketchChatPage.png)
 
 ### Profile Page Rough Sketch
 
-![Profile Page Rough Sketch](images/StartupSketchProfilePage.png)
+![Profile Page Rough Sketch](public/images/StartupSketchProfilePage.png)
 
 ### Login Page Rough Sketch
 
-![Login Page Rough Sketch](images/StartupSketchLoginPage.png)
+![Login Page Rough Sketch](public/images/StartupSketchLoginPage.png)
 
 ### Signup Page Rough Sketch
 
-![Signup Page Rough Sketch](images/StartupSketchSignupPage.png)
+![Signup Page Rough Sketch](public/images/StartupSketchSignupPage.png)
 
 ## Key Features
 
