@@ -102,9 +102,8 @@ The one-stop shop for film nerds. You can find information about movies, read re
     | ------ |
     | username |
     | password |
-  - `/api/favorites/check` - checks if the given user has the given film in their favorites list
-  - `/api/favorites/add` - adds the given film to the favorites list of the given user
-  - `/api/favorites/remove` - removes the given film from the favorites list of the given user
-  - `/api/favorites/get` - gets a list of all films on the favorites list of the given user
-  - The same four `/api/favorites` but for `/api/watchlist`
+  - `GET /api/list/favorites|watchlist` - gets a list of all films on the specified list of the given user
+  - `GET /api/exists/favorites|watchlist` - checks if the given user has the given film in the specified list
+  - `POST /api/add/favorites|watchlist` - adds the given film to the specified list of the given user
+  - `DELETE /api/remove/favorites|watchlist` - removes the given film from the specified list of the given user
 * Frontend calls backend provided service endpoints (see X)
