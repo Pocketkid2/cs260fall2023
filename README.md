@@ -8,27 +8,27 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 ### Home Page Rough Sketch
 
-![Home Page Rough Sketch](images/StartupSketchHomePage.png)
+![Home Page Rough Sketch](public/images/StartupSketchHomePage.png)
 
 ### Search Page Rough Sketch
 
-![Search Page Rough Sketch](images/StartupSketchSearchPage.png)
+![Search Page Rough Sketch](public/images/StartupSketchSearchPage.png)
 
 ### Chat Page Rough Sketch
 
-![Chat Page Rough Sketch](images/StartupSketchChatPage.png)
+![Chat Page Rough Sketch](public/images/StartupSketchChatPage.png)
 
 ### Profile Page Rough Sketch
 
-![Profile Page Rough Sketch](images/StartupSketchProfilePage.png)
+![Profile Page Rough Sketch](public/images/StartupSketchProfilePage.png)
 
 ### Login Page Rough Sketch
 
-![Login Page Rough Sketch](images/StartupSketchLoginPage.png)
+![Login Page Rough Sketch](public/images/StartupSketchLoginPage.png)
 
 ### Signup Page Rough Sketch
 
-![Signup Page Rough Sketch](images/StartupSketchSignupPage.png)
+![Signup Page Rough Sketch](public/images/StartupSketchSignupPage.png)
 
 ## Key Features
 
@@ -80,3 +80,31 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * JavaScript support for future database data - If you search for films while logged in, two buttons appear to add the film to your favorites or watchlist! You can then go see those lists on your profile page, and remove the films from those lists if you want to! This is all done with LocalStorage so it is not server-side.
 * JavaScript support for future WebSocket - If you are logged in, you can check out the chat page, which would normally show you logged in users and chat messages, but since we are using LocalStorage only for this part, you only see yourself logged in and only your own chat messages that you send! The chat messages are not saved once you reload the page. That will change once the backend works with websocket.
 * JavaScript support for your application's interaction logic - The homepage is still curated, but now it loads the images and facts dynamically from an API request! The search function also works without logging in, and uses API requests to get data and populate a table of information. The other pages all use JavaScript to function as well.
+
+## Startup Service Deliverables
+
+* NodeJS and Express service has been created (see index.js)
+* Frontend is served up using express (see index.js)
+* Frontend calls third party endpoints (see public/scripts/search.js)
+  - Third part API request to OMDB to get search results
+* Backend provides service endpoints (see X)
+  - `/auth/signup` - creates a new account with the given credentials]
+    | Fields |
+    | ------ |
+    | username |
+    | password |
+    | first_name |
+    | last_name |
+    | gender |
+    | birth_date|
+  - `/auth/login` - attempts to login with the given credentials
+    | Fields |
+    | ------ |
+    | username |
+    | password |
+  - `/api/favorites/check` - checks if the given user has the given film in their favorites list
+  - `/api/favorites/add` - adds the given film to the favorites list of the given user
+  - `/api/favorites/remove` - removes the given film from the favorites list of the given user
+  - `/api/favorites/get` - gets a list of all films on the favorites list of the given user
+  - The same four `/api/favorites` but for `/api/watchlist`
+* Frontend calls backend provided service endpoints (see X)
