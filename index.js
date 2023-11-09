@@ -1,10 +1,14 @@
 var express = require('express');
+var cookie_parser = require('cookie-parser');
 var app = express();
 
 var api_router = require('./api_router');
 var auth_router = require('./auth_router');
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
+
+// 0. Use cookies
+app.use(cookie_parser());
 
 // 1. Log request to console
 app.use((req, res, next) => {
