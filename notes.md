@@ -46,8 +46,8 @@ HTTPS requires certificate
 
 ### Sign up
 
-`curl -X POST localhost:4000/auth/signup -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234","first_name":"Adam","last_name":"Taylor","gender":"male","birth_date":"1999-04-16"}'`
+`curl -c cookies.txt -X POST localhost:4000/auth/signup -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234","first_name":"Adam","last_name":"Taylor","gender":"male","birth_date":"1999-04-16"}'`
 
 ### Login
 
-`curl localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
+`curl -c cookies.txt localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
