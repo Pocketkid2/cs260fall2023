@@ -6,6 +6,7 @@ var auth_router = require('./auth_router');
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
+// 1. Log request to console
 app.use((req, res, next) => {
     console.log(`\n\n\nRequest received (time = ${new Date(Date.now()).toLocaleString()})`);
     console.log(`\tMethod: ${req.method}`);
@@ -20,13 +21,17 @@ app.use((req, res, next) => {
     next();
 });
 
+// 2. Convert body to JSON
 app.use(express.json());
 
-app.use(express.static('public'));
-
+// 3. Route /api and /auth accordingly
 app.use('/api', api_router);
 app.use('/auth', auth_router);
 
+// 4. If request is a file, serve that next
+app.use(express.static('public'));
+
+// 5. If none of the above, give index.html
 app.use((request, response) => {
     response.sendFile('index.html', { root: 'public' });
 });
