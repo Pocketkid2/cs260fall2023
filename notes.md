@@ -34,3 +34,20 @@ A record can point to other A record and IP
 
 HTTPS requires certificate
 
+# CURL Command Reference
+
+### Grab main page
+
+`curl localhost:4000`
+
+### Grab user list (Need to delete this endpoint before deployment)
+
+`curl localhost:4000/auth/list`
+
+### Sign up
+
+`curl -X POST localhost:4000/auth/signup -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234","first_name":"Adam","last_name":"Taylor","gender":"male","birth_date":"1999-04-16"}'`
+
+### Login
+
+`curl localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
