@@ -50,4 +50,4 @@ HTTPS requires certificate
 
 ### Login
 
-`curl -c cookies.txt localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
+`curl -c cookies.txt -X GET localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
