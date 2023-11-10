@@ -1,3 +1,14 @@
+// Highlight the tab at the top corresponding to the page we've selected
+function highlight_current_page_tab() {
+    
+    const path = window.location.pathname;
+    const page_name = path.split('/').pop().split('.')[0];
+    const element = document.getElementById("header-nav-bar-" + page_name);
+    if (element) {
+        element.style.backgroundColor = "#AAAAAA"
+    }
+}
+
 // Remove the navigation tabs relating to the pages that are available or unavailable
 function remove_unusable_navigation_tabs() {
     const current_username = localStorage.getItem("current_user");
@@ -35,17 +46,5 @@ function remove_unusable_navigation_tabs() {
     }
 }
 
-remove_unusable_navigation_tabs();
-
-// Highlight the tab at the top corresponding to the page we've selected
-function highlight_current_page_tab() {
-    
-    const path = window.location.pathname;
-    const page_name = path.split('/').pop().split('.')[0];
-    const element = document.getElementById("header-nav-bar-" + page_name);
-    if (element) {
-        element.style.backgroundColor = "#AAAAAA"
-    }
-}
-
 highlight_current_page_tab();
+remove_unusable_navigation_tabs();
