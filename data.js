@@ -6,8 +6,9 @@ module.exports = {
     authenticate_token: authenticate_token,
     user_exists: user_exists,
     add_user: add_user,
-    list_users: list_users,
-    list_tokens: list_tokens,
+    get_list: get_list,
+    list_users: list_users,     // DEBUG
+    list_tokens: list_tokens,   // DEBUG
 };
 
 function list_users() {
@@ -16,6 +17,18 @@ function list_users() {
 
 function list_tokens() {
     console.log(JSON.stringify(auth_tokens));
+}
+
+function get_list(username, list_name) {
+    for (i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            if (users[i][list_name] === undefined) {
+                users[i][list_name] = [];
+            }
+            return users[i][list_name];
+        }
+    }
+    return null;
 }
 
 function user_exists(username) {
