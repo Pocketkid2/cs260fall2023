@@ -75,6 +75,28 @@ auth_router.post('/login', (req, res) => {
     }
 });
 
+auth_router.delete('/logout', (req, res) => {
+    const auth_token = req.cookies.auth_token;
+    if (auth_token === undefined) {
+        console.log("\tRejecting request due to missing auth token");
+        res.status(401).send("Missing auth token");
+        return;
+    }
+
+    const username = data.authenticate_token(auth_token);
+
+    if (username === null) {
+        console.log("\tRejecting request due to invalid auth token");
+        res.status(401).send("Invalid auth token");
+        return;
+    }
+
+    data.delete_token(username);
+    console.log("\tUser logged out");
+    res.clearCookie('auth_token');
+    res.status(200).end();
+});
+
 auth_router.get('/list', (req, res) => {
     console.log("\nListing Users:");
     data.list_users();
