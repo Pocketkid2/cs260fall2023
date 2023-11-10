@@ -7,6 +7,7 @@ module.exports = {
     user_exists: user_exists,
     add_user: add_user,
     get_list: get_list,
+    delete_token: delete_token,
     list_users: list_users,     // DEBUG
     list_tokens: list_tokens,   // DEBUG
 };
@@ -71,6 +72,10 @@ function authenticate_token(token) {
         }
     }
     return null;
+}
+
+function delete_token(username) {
+    delete auth_tokens[username];
 }
 
 function create_auth_token(username) {
