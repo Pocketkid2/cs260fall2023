@@ -88,22 +88,11 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Frontend calls third party endpoints (see public/scripts/search.js)
   - Third part API request to OMDB to get search results
 * Backend provides service endpoints (see X)
-  - `POST /auth/signup` - creates a new account with the given credentials]
-    | Fields |
-    | ------ |
-    | username |
-    | password |
-    | first_name |
-    | last_name |
-    | gender |
-    | birth_date|
-  - `POST /auth/login` - attempts to login with the given credentials
-    | Fields |
-    | ------ |
-    | username |
-    | password |
-  - `GET /api/list/favorites|watchlist` - gets a list of all films on the specified list of the given user
-  - `GET /api/exists/favorites|watchlist` - checks if the given user has the given film in the specified list
-  - `POST /api/add/favorites|watchlist` - adds the given film to the specified list of the given user
-  - `DELETE /api/remove/favorites|watchlist` - removes the given film from the specified list of the given user
+  - `POST /auth/signup` - Requires username and password
+  - `POST /auth/login` - Requires username and password, returns cookie
+  - `DELETE /auth/logout` - Requires cookie
+  - `GET /api/list/favorites|watchlist` - Requires cookie, returns JSON data
+  - `GET /api/exists/favorites|watchlist` - Requires cookie, returns HTTP code
+  - `POST /api/add/favorites|watchlist` - Requires cookie
+  - `DELETE /api/remove/favorites|watchlist` - Requires cookie
 * Frontend calls backend provided service endpoints (see X)
