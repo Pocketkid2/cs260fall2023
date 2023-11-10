@@ -87,12 +87,15 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Frontend is served up using express (see index.js)
 * Frontend calls third party endpoints (see public/scripts/search.js)
   - Third part API request to OMDB to get search results
-* Backend provides service endpoints (see X)
-  - `POST /auth/signup` - Requires username and password
-  - `POST /auth/login` - Requires username and password, returns cookie
-  - `DELETE /auth/logout` - Requires cookie
-  - `GET /api/list/favorites|watchlist` - Requires cookie, returns JSON data
-  - `GET /api/exists/favorites|watchlist` - Requires cookie, returns HTTP code
-  - `POST /api/add/favorites|watchlist` - Requires cookie
-  - `DELETE /api/remove/favorites|watchlist` - Requires cookie
+* Backend provides service endpoints (see api_router.js and auth_router.js)
+  | URL | HTTP Method | Requires Cookie? | Requires JSON Body? | Response Cookie? | Response JSON Body? | Description |
+  | --- | ----------- | ---------------- | ------------------- | ---------------- | ------------------- | ----------- |
+  | /auth/signup | POST | no | yes | no | no | Adds username and password to database |
+  | /auth/login | POST | no | yes | yes | no | If valid username and password, creates auth token and returns as cookie |
+  | /auth/logout | DELETE | yes | no | yes | no | If valid auth token in cookie, removes it from server and sends back empty cookie |
+  | /auth/list | GET | no | no | no | no | Debug feature, prints memory database to NodeJS console |
+  | /api/list/<list> | GET | yes | no | no | yes | Returns JSON list (options are watchlist and favorites) |
+  | /api/exists/<list> | GET | yes | yes | no | no | Checks if film in JSON request body exists in list (check HTTP response code) |
+  | /api/add/<list> | POST | yes | yes | no | no | Adds film in JSON request body to list |
+  | /api/remove/<list> | DELETE | yes | yes | no | no | Removes film in JSON request body from list |
 * Frontend calls backend provided service endpoints (see X)
