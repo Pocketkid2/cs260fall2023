@@ -88,7 +88,7 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * Frontend calls third party endpoints (see public/scripts/search.js)
   - Third part API request to OMDB to get search results
 * Backend provides service endpoints (see X)
-  - `/auth/signup` - creates a new account with the given credentials]
+  - `POST /auth/signup` - creates a new account with the given credentials]
     | Fields |
     | ------ |
     | username |
@@ -97,7 +97,7 @@ The one-stop shop for film nerds. You can find information about movies, read re
     | last_name |
     | gender |
     | birth_date|
-  - `/auth/login` - attempts to login with the given credentials
+  - `POST /auth/login` - attempts to login with the given credentials
     | Fields |
     | ------ |
     | username |
