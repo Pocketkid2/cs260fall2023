@@ -146,4 +146,34 @@ api_router.delete('/remove/:list(watchlist|favorites)', (req, res) => {
     res.status(200).end();
 });
 
+api_router.get('/user', (req, res) => {
+    
+    const auth_token = req.cookies.auth_token;
+
+    if (auth_token === undefined) {
+        console.log("\tRejecting request due to missing auth token");
+        res.status(401).send("Missing auth token");
+        return;
+    }
+
+    const username = data.authenticate_token(auth_token);
+
+    if (username === null) {
+        console.log("\tRejecting request due to invalid auth token");
+        res.status(401).send("Invalid auth token");
+        return;
+    }
+
+    const user_info = data.get_info(username);
+
+    if (user_info === null) {
+        console.log(`\tUser ${username} does not exist`);
+        res.status(404).send("User does not exist");
+        return;
+    }
+
+    console.log(`\tSending user info for ${username} as ${JSON.stringify(user_info)}`);
+    res.status(200).send(JSON.stringify(user_info));
+});
+
 module.exports = api_router;
