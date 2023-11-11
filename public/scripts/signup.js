@@ -28,6 +28,7 @@ function read_gender(elements) {
 }
 
 function signup(event) {
+    event.preventDefault();
 
     const first_name = document.getElementById("firstname").value;
     const last_name = document.getElementById("lastname").value;
@@ -40,38 +41,42 @@ function signup(event) {
     const password2 = document.getElementById("password2").value;
 
     if (!is_valid_name(first_name)) {
-        event.preventDefault();
         alert("First name field is invalid, please try again. Only letters, hyphens, and spaces are allowed.");
         return;
     }
 
     if (!is_valid_name(last_name)) {
-        event.preventDefault();
         alert("Last name field is invalid, please try again. Only letters, hyphens, and spaces are allowed.");
         return;
     }
 
     if (!is_valid_date(birth_date)) {
-        event.preventDefault();
         alert("Date of birth is invalid, please try again.");
         return;
     }
 
     if (gender !== "male" && gender !== "female") {
-        event.preventDefault();
         alert("Please select your gender and try again.");
         return;
     }
 
-    if (!is_valid_username(username1) || !is_valid_username(username2)) {
-        event.preventDefault();
-        alert("Please check that your username is valid and that both fields match. Remember that usernames must be at least 6 characters and can only use letters, numbers, and underscores.");
+    if (username1 !== username2) {
+        alert("Your usernames do not match, please try again.");
         return;
     }
 
-    if (!is_valid_password(password1) || !is_valid_password(password1)) {
-        event.preventDefault();
-        alert("Please check that your password is valid and that both fields match. Remember that passwords must be at least 8 characters and cannot have spaces.");
+    if (password1 !== password2) {
+        alert("Your passwords do not match, please try again.");
+        return;
+    }
+
+    if (!is_valid_username(username1)) {
+        alert("Your username is not valid. Remember that usernames must be at least 6 characters and can only use letters, numbers, and underscores.");
+        return;
+    }
+
+    if (!is_valid_password(password1)) {
+        alert("Please check that your password is valid. Remember that passwords must be at least 8 characters and cannot have spaces.");
         return;
     }
 
@@ -85,27 +90,25 @@ function signup(event) {
         username: username1,
         password: password1,
         creation_date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
-        favorites_list: [],
-        watch_list: []
+        favorites: [],
+        watchlist: []
     }
 
-    var available_users = localStorage.getItem("available_users");
-
-    if (available_users === null) {
-        available_users = [user_object];
-    } else {
-        available_users = JSON.parse(available_users);
-        // Check for duplicate username
-        for (i = 0; i < available_users.length; i++) {
-            if (available_users[i].username === user_object.username) {
-                event.preventDefault();
-                alert("A user with that username already exists! Please pick another one.");
-                return;
-            }
+    fetch('/auth/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user_object)
+    }).then(response => {
+        if (response.status === 200) {
+            document.getElementById("signup-form").submit();
+        } else if (response.status === 409) {
+            alert('Username already exists. Please pick another one.');
+        } else {
+            alert('There was a problem signing up. Please try again.');
         }
-        available_users.push(user_object);
-    }
-
-    localStorage.setItem("available_users", JSON.stringify(available_users));
-    localStorage.setItem("current_user", user_object.username);
+    }).catch(error => {
+        console.log('There was a problem with the fetch operation: ' + error.message);
+    });
 }
