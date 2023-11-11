@@ -6,6 +6,7 @@ module.exports = {
     authenticate_token: authenticate_token,
     user_exists: user_exists,
     add_user: add_user,
+    get_info: get_info,
     get_list: get_list,
     delete_token: delete_token,
     list_users: list_users,     // DEBUG
@@ -18,6 +19,18 @@ function list_users() {
 
 function list_tokens() {
     console.log(JSON.stringify(auth_tokens));
+}
+
+function get_info(username) {
+    for (i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            const user_copy = Object.assign({}, users[i]);
+            delete user_copy.username;
+            delete user_copy.password;
+            return user_copy;
+        }
+    }
+    return null;
 }
 
 function get_list(username, list_name) {
