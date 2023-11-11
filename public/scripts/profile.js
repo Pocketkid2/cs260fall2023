@@ -9,108 +9,77 @@ function custom_date_formatting(input_date_string) {
     return date_object.toLocaleDateString();
 }
 
-function load_profile_info() {
-
-    var current_user = localStorage.getItem("current_user");
-    if (current_user === null) {
-        console.log("current_user is not available! Unable to load data");
-        return;
-    }
-
-    var available_users = localStorage.getItem("available_users");
-    if (available_users === null) {
-        console.log("available_users are not available! Unable to load data");
-        return;
-    }
-    available_users = JSON.parse(available_users);
-
-    var user_object = null;
-    for (i = 0; i < available_users.length; i++) {
-        if (available_users[i].username === current_user) {
-            user_object = available_users[i];
-        }
-    }
-
-    if (user_object === null) {
-        console.log("User object is null! Unable to load data");
-        return;
-    }
-
-    var profile_name_element = document.getElementById("profile-name");
-    profile_name_element.innerText = `${user_object["first_name"]} ${user_object["last_name"]}`;
-
-    var profile_username_element = document.getElementById("profile-username");
-    profile_username_element.innerText = user_object["username"];
-
-    var profile_birthdate_element = document.getElementById("profile-birthdate");
-    profile_birthdate_element.innerText = custom_date_formatting(user_object["birth_date"]);
-
-    var profile_creation_element = document.getElementById("profile-creation-date");
-    profile_creation_element.innerText = custom_date_formatting(user_object["creation_date"]);
-
-    // Load favorites
-    var favorites_list_label = document.getElementById("favorites-list-label");
-    favorites_list_label.innerText = `Favorites (${user_object["favorites_list"].length})`;
-
-    var favorites_list = document.getElementById("favorites-list");
-    for (i = 0; i < user_object["favorites_list"].length; i++) {
-        var table_row = document.createElement("tr");
-        var movie_cell = document.createElement("td");
-        var button_cell = document.createElement("td");
-
-        var movie_text = document.createElement("p");
-        const movie_string = user_object["favorites_list"][i];
-        movie_text.innerText = movie_string;
-        table_row.id = movie_string;
-
-        var button_element = document.createElement("button");
-        button_element.innerText = "X";
-        button_element.value = movie_string;
-        button_element.addEventListener("click", function() {
-            user_object["favorites_list"] = user_object["favorites_list"].filter(item => item !== this.value);
-            favorites_list_label.innerText = `Favorites (${user_object["favorites_list"].length})`;
-            localStorage.setItem("available_users", JSON.stringify(available_users));
-            document.getElementById(movie_string).remove();
-        });
-
-        movie_cell.appendChild(movie_text);
-        button_cell.appendChild(button_element);
-        table_row.appendChild(movie_cell);
-        table_row.appendChild(button_cell);
-        favorites_list.appendChild(table_row);
-    }
-
-    // Load watchlist
-    var watch_list_label = document.getElementById("watch-list-label");
-    watch_list_label.innerText = `Watchlist (${user_object["watch_list"].length})`;
-
-    var watch_list = document.getElementById("watch-list");
-    for (i = 0; i < user_object["watch_list"].length; i++) {
-        var table_row = document.createElement("tr");
-        var movie_cell = document.createElement("td");
-        var button_cell = document.createElement("td");
-
-        var movie_text = document.createElement("p");
-        const movie_string = user_object["watch_list"][i];
-        movie_text.innerText = movie_string;
-        table_row.id = movie_string;
-
-        var button_element = document.createElement("button");
-        button_element.innerText = "X";
-        button_element.value = movie_string;
-        button_element.addEventListener("click", function() {
-            user_object["watch_list"] = user_object["watch_list"].filter(item => item !== this.value);
-            watch_list_label.innerText = `Watchlist (${user_object["watch_list"].length})`;
-            localStorage.setItem("available_users", JSON.stringify(available_users));
-            document.getElementById(movie_string).remove();
-        });
-
-        movie_cell.appendChild(movie_text);
-        button_cell.appendChild(button_element);
-        table_row.appendChild(movie_cell);
-        table_row.appendChild(button_cell);
-        watch_list.appendChild(table_row);
-    }
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-load_profile_info();
+function load_profile_info(user_info) {
+    document.getElementById("profile-name").innerHTML = `${user_info.first_name} ${user_info.last_name}`;
+    document.getElementById("profile-birthdate").innerHTML = custom_date_formatting(user_info.birth_date);
+    document.getElementById("profile-creation-date").innerHTML = custom_date_formatting(user_info.creation_date);
+}
+
+function load_list(list, list_name) {
+    for (i = 0; i < list.length; i++) {
+        // Create the table elements
+        var table_row = document.createElement("tr");
+        var film_cell = document.createElement("td");
+        var button_cell = document.createElement("td");
+
+        // Create the film text
+        var film_text = document.createElement("p");
+        const film_string = list[i];
+        film_text.innerText = film_string;
+        table_row.id = film_string;
+        film_cell.appendChild(film_text);
+        table_row.appendChild(film_cell);
+
+        // Create the button
+        var button_element = document.createElement("button");
+        button_element.innerText = "X";
+        button_element.value = film_string;
+        button_element.addEventListener("click", function(event) {
+            fetch('/api/remove/' + list_name, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({film: event.target.value})
+            }).then(response => {
+                if (response.status !== 200) {
+                    alert("Something went wrong, please try again.");
+                } else {
+                    document.getElementById(event.target.value).remove();
+                    const str = document.getElementById(list_name + "-label").innerText;
+                    const new_str = str.replace(/\d+/, function(match) {
+                        return parseInt(match) - 1;
+                    });
+                    document.getElementById(list_name + "-label").innerText = new_str;
+                }
+            }).catch(error => {
+                console.log('There was a problem with the fetch operation: ' + error.message);
+            });
+        });
+        button_cell.appendChild(button_element);
+        table_row.appendChild(button_cell);
+
+        document.getElementById(list_name + "-table").appendChild(table_row);
+    }
+    document.getElementById(list_name + "-label").innerText = `${capitalize(list_name)} (${list.length})`;
+}
+
+fetch('/api/user', {
+    method: 'GET',
+}).then(response => {
+    if (response.status === 200) {
+        return response.json();
+    } else {
+        console.log("Unable to load profile info");
+    }
+}).then(data => {
+    load_profile_info(data);
+    load_list(data.favorites, "favorites");
+    load_list(data.watchlist, "watchlist");
+}).catch(error => {
+    console.log('There was a problem with the fetch operation: ' + error.message);
+});
