@@ -91,7 +91,7 @@ The one-stop shop for film nerds. You can find information about movies, read re
   | URL | HTTP Method | Requires Cookie? | Requires JSON Body? | Response Cookie? | Response JSON Body? | Description |
   | --- | ----------- | ---------------- | ------------------- | ---------------- | ------------------- | ----------- |
   | `/auth/signup` | POST | no | yes | no | no | Adds username and password to database |
-  | `/auth/login` | POST | no | yes | yes | no | If valid username and password, creates auth token and returns as cookie |
+  | `/auth/login` | POST | no | no | yes | no | If valid username and password, creates auth token and returns as cookie |
   | `/auth/logout` | DELETE | yes | no | yes | no | If valid auth token in cookie, removes it from server and sends back empty cookie |
   | `/auth/list` | GET | no | no | no | no | Debug feature, prints memory database to NodeJS console |
   | `/api/list/<list>` | GET | yes | no | no | yes | Returns JSON list (options are watchlist and favorites) |
