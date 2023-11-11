@@ -28,12 +28,7 @@ auth_router.post('/signup', (req, res) => {
         return;
     }
 
-    const user_object = {
-        username: req.body.username,
-        password: req.body.password,
-    };
-
-    data.add_user(user_object);
+    data.add_user(req.body);
 
     console.log("\tUser signed up");
     res.status(200).end();
