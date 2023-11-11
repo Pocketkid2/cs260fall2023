@@ -31,7 +31,7 @@ api_router.get('/list/:list(watchlist|favorites)', (req, res) => {
     res.status(200).send(list);
 });
 
-api_router.get('/exists/:list(watchlist|favorites)', (req, res) => {
+api_router.post('/exists/:list(watchlist|favorites)', (req, res) => {
 
     const auth_token = req.cookies.auth_token;
 
