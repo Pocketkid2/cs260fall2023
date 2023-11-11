@@ -95,8 +95,9 @@ The one-stop shop for film nerds. You can find information about movies, read re
   | `/auth/logout` | DELETE | yes | no | yes | no | If valid auth token in cookie, removes it from server and sends back empty cookie |
   | `/auth/list` | GET | no | no | no | no | Debug feature, prints memory database to NodeJS console, will be removed once database is online |
   | `/api/list/<list>` | GET | yes | no | no | yes | Returns JSON list (options are watchlist and favorites) |
-  | `/api/exists/<list>` | GET | yes | yes | no | no | Checks if film in JSON request body exists in list (check HTTP response code) |
+  | `/api/exists/<list>` | POST | yes | yes | no | no | Checks if film in JSON request body exists in list (check HTTP response code) |
   | `/api/add/<list>` | POST | yes | yes | no | no | Adds film in JSON request body to list |
   | `/api/remove/<list>` | DELETE | yes | yes | no | no | Removes film in JSON request body from list |
   | `/api/user` | GET | yes | no | no | yes | Get user info from database |
-* Frontend calls backend provided service endpoints (see X)
+* Frontend calls backend provided service endpoints (see all scripts in /public/scripts/ folder except chat.js and index.js)
+  - If you go to my site, you can sign up, login, see your profile, go to the search page and add films from the search results into one of your lists, and see them appear in your profile. If you log out and log back in, you will see the data persist (in memory, as the database has not been set up yet).
