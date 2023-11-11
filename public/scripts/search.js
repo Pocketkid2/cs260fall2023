@@ -1,3 +1,7 @@
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // The API key I received from OMDB
 const api_key = "4ff2c76";
 
@@ -115,6 +119,72 @@ function request_all_titles(results) {
     })
 }
 
+function add_button_if_nonextant(button_cell, film_string, list) {
+    fetch('/api/exists/' + list, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            film: film_string
+        })
+    }).then(response => {
+        if (response.status === 404) {
+            const button = document.createElement("button");
+            button.innerHTML = capitalize(list);
+            button.classList.add(list + "-button");
+            button.addEventListener("click", function(event) {
+                fetch('/api/add/' + list, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({film: film_string})
+                }).then(response => {
+                    if (response.status !== 200) {
+                        alert("Something went wrong, please try again.");
+                    } else {
+                        event.target.remove();
+                    }
+                }).catch(error => {
+                    console.log('There was a problem with the fetch operation: ' + error.message);
+                });
+            });
+            button_cell.appendChild(button);
+        }
+    }).catch(error => {
+        console.log('There was a problem with the fetch operation: ' + error.message);
+    });
+}
+
+function load_buttons(table) {
+
+    // Add button column header
+    const header = document.createElement("th");
+    table.rows[0].appendChild(header);
+    const text = document.createTextNode("Add to List");
+    header.appendChild(text);
+
+    // Run request to find buttons for each row
+    for (i = 1; i < table.rows.length; i++) {
+        // Make sure each row has a cell for buttons to appear
+        const button_cell = document.createElement("td");
+        button_cell.style.width = '10em';
+
+        // Add the button cell to the row
+        const row = table.rows[i];
+        row.appendChild(button_cell);
+
+        // Create film string to check via API request
+        const title = row.cells[0].innerText;
+        const year = row.cells[1].innerText;
+        const film_string = `${title} (${year})`;
+
+        add_button_if_nonextant(button_cell, film_string, "favorites");
+        add_button_if_nonextant(button_cell, film_string, "watchlist");
+    }
+}
+
 // Takes in an array of objects to use to populate the table, and does it
 function update_table(objects) {
 
@@ -136,7 +206,6 @@ function update_table(objects) {
     search_results_div.appendChild(search_results_table);
 
     // ADD TABLE HEADERS
-
     const header_row = document.createElement("tr");        // Create new row for header
     search_results_table.appendChild(header_row);           // Add row to table
     columns.forEach((column) => {                           // Loop through each column
@@ -147,16 +216,7 @@ function update_table(objects) {
         column_header.appendChild(text_node);                       // Apply the label to the column header
     });
 
-    // Add a column for buttons if user logged in
-    if (localStorage.getItem("current_user") != null) {
-        const header = document.createElement("th");
-        header_row.appendChild(header);
-        const text = document.createTextNode("Add to");
-        header.appendChild(text);
-    }
-
     // ADD TABLE ROWS
-
     filtered_data.forEach((object) => {
         const data_row = document.createElement("tr");      // Create new row for data
         search_results_table.appendChild(data_row);         // Add row to table
@@ -166,60 +226,16 @@ function update_table(objects) {
             const text_node = document.createTextNode(object[column_name]);
             data_cell.appendChild(text_node);
         });
+    });
 
-        // Add buttons if user logged in
-        const logged_in_user = localStorage.getItem("current_user");
-        if (logged_in_user != null) {
-            const button_cell = document.createElement("td");
-            button_cell.style.width = "10em";
-
-            const movie_string = `${object["Title"]} (${object["Year"]})`;
-
-            var user_data = localStorage.getItem("available_users");
-            var favorites = null;
-            var watchlist = null;
-            if (user_data != null) {
-                user_data = JSON.parse(user_data);
-                for (i = 0; i < user_data.length; i++) {
-                    if (user_data[i]["username"] === logged_in_user) {
-                        favorites = user_data[i]["favorites_list"];
-                        watchlist = user_data[i]["watch_list"];
-                    }
-                }
-            }
-
-            if (favorites == null || !favorites.includes(movie_string)) {
-                const favorites_button = document.createElement("button");
-                favorites_button.innerHTML = "Favorites";
-                favorites_button.classList.add("favorites-button");
-                favorites_button.addEventListener("click", function() {
-                    if (update_user_object(logged_in_user, "favorites_list", movie_string)) {
-                        // If success, remove button
-                        this.remove();
-                    } else {
-                        alert("Error: Could not add film to list. Please check console for errors.");
-                    }
-                });
-                button_cell.appendChild(favorites_button);
-            }
-
-            if (watchlist == null || !watchlist.includes(movie_string)) {
-                const watchlist_button = document.createElement("button");
-                watchlist_button.innerHTML = "Watchlist";
-                watchlist_button.classList.add("watchlist-button");
-                watchlist_button.addEventListener("click", function() {
-                    if (update_user_object(logged_in_user, "watch_list", movie_string)) {
-                        // If success, remove button
-                        this.remove();
-                    } else {
-                        alert("Error: Could not add film to list. Please check console for errors.");
-                    }
-                });
-                button_cell.appendChild(watchlist_button);
-            }
-
-            data_row.appendChild(button_cell);
+    fetch('/auth/login', {
+        method: 'GET'
+    }).then(response => {
+        if (response.status === 200) {
+            load_buttons(search_results_table);
         }
+    }).catch(error => {
+        console.log('There was a problem with the fetch operation: ' + error.message);
     });
 
 }
