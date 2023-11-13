@@ -7,7 +7,7 @@ auth_router.use((req, res, next) => {
     next();
 });
 
-auth_router.post('/signup', (req, res) => {
+auth_router.post('/signup', async (req, res) => {
     
     // Make sure the important fields are in the signup request
     if (!req.body.username) {
@@ -22,7 +22,8 @@ auth_router.post('/signup', (req, res) => {
     }
 
     // Make sure the username is unique
-    if (data.user_exists(req.body.username)) {
+    const username_exists = await data.user_exists(req.body.username);
+    if (username_exists) {
         console.log("\tRejecting request due to existing username");
         res.status(409).send("Username already exists");
         return;
@@ -34,11 +35,11 @@ auth_router.post('/signup', (req, res) => {
     res.status(200).end();
 });
 
-auth_router.post('/login', (req, res) => {
+auth_router.post('/login', async (req, res) => {
 
     // If we get an empty login request but we have a valid auth token cookie, return success
     if (req.cookies.auth_token != undefined) {
-        const username = data.authenticate_token(req.cookies.auth_token);
+        const username = await data.authenticate_token(req.cookies.auth_token);
         if (username) {
             console.log("\tUser already logged in");
             res.status(200).end();
@@ -59,7 +60,7 @@ auth_router.post('/login', (req, res) => {
     }
 
     // Attempt authentication and return the result
-    const auth_token = data.authenticate_credentials(req.body.username, req.body.password);
+    const auth_token = await data.authenticate_credentials(req.body.username, req.body.password);
     if (auth_token) {
         console.log("\tUser logged in");
         res.cookie('auth_token', auth_token, { sameSite: 'strict' });
@@ -70,7 +71,7 @@ auth_router.post('/login', (req, res) => {
     }
 });
 
-auth_router.delete('/logout', (req, res) => {
+auth_router.delete('/logout', async (req, res) => {
     const auth_token = req.cookies.auth_token;
     if (auth_token === undefined) {
         console.log("\tRejecting request due to missing auth token");
@@ -78,7 +79,7 @@ auth_router.delete('/logout', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");

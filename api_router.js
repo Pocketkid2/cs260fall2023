@@ -7,7 +7,7 @@ api_router.use((req, res, next) => {
     next();
 });
 
-api_router.get('/list/:list(watchlist|favorites)', (req, res) => {
+api_router.get('/list/:list(watchlist|favorites)', async (req, res) => {
 
     const auth_token = req.cookies.auth_token;
 
@@ -17,7 +17,7 @@ api_router.get('/list/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");
@@ -25,13 +25,13 @@ api_router.get('/list/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const list = data.get_list(username, req.params.list);
+    const list = await data.get_list(username, req.params.list);
 
     console.log(`\tSending ${req.params.list} for ${username} as ${JSON.stringify(list)}`);
     res.status(200).send(list);
 });
 
-api_router.post('/exists/:list(watchlist|favorites)', (req, res) => {
+api_router.post('/exists/:list(watchlist|favorites)', async (req, res) => {
 
     const auth_token = req.cookies.auth_token;
 
@@ -41,7 +41,7 @@ api_router.post('/exists/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");
@@ -57,9 +57,9 @@ api_router.post('/exists/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const list = data.get_list(username, req.params.list);
+    const film_exists = await data.film_exists(username, req.params.list, film);
 
-    if (list.includes(film)) {
+    if (film_exists) {
         console.log(`\tFilm ${film} exists in ${req.params.list} for ${username}`);
         res.status(200).end();
     } else {
@@ -68,7 +68,7 @@ api_router.post('/exists/:list(watchlist|favorites)', (req, res) => {
     }
 });
 
-api_router.post('/add/:list(watchlist|favorites)', (req, res) => {
+api_router.post('/add/:list(watchlist|favorites)', async (req, res) => {
 
     const auth_token = req.cookies.auth_token;
 
@@ -78,7 +78,7 @@ api_router.post('/add/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");
@@ -94,20 +94,20 @@ api_router.post('/add/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const list = data.get_list(username, req.params.list);
+    const film_exists = await data.film_exists(username, req.params.list, film);
 
-    if (list.includes(film)) {
+    if (film_exists) {
         console.log(`\tFilm ${film} already exists in ${req.params.list} for ${username}`);
         res.status(409).send("Film already exists");
         return;
     }
 
-    list.push(film);
+    await data.add_film(username, req.params.list, film);
     console.log(`\tAdded film ${film} to ${req.params.list} for ${username}`);
     res.status(200).end();
 });
 
-api_router.delete('/remove/:list(watchlist|favorites)', (req, res) => {
+api_router.delete('/remove/:list(watchlist|favorites)', async (req, res) => {
 
     const auth_token = req.cookies.auth_token;
 
@@ -117,7 +117,7 @@ api_router.delete('/remove/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");
@@ -133,20 +133,20 @@ api_router.delete('/remove/:list(watchlist|favorites)', (req, res) => {
         return;
     }
 
-    const list = data.get_list(username, req.params.list);
+    const film_exists = await data.film_exists(username, req.params.list, film);
 
-    if (!list.includes(film)) {
+    if (!film_exists) {
         console.log(`\tFilm ${film} does not exist in ${req.params.list} for ${username}`);
         res.status(404).send("Film does not exist");
         return;
     }
 
-    list.splice(list.indexOf(film), 1);
+    await data.remove_film(username, req.params.list, film);
     console.log(`\tRemoved film ${film} from ${req.params.list} for ${username}`);
     res.status(200).end();
 });
 
-api_router.get('/user', (req, res) => {
+api_router.get('/user', async (req, res) => {
     
     const auth_token = req.cookies.auth_token;
 
@@ -156,7 +156,7 @@ api_router.get('/user', (req, res) => {
         return;
     }
 
-    const username = data.authenticate_token(auth_token);
+    const username = await data.authenticate_token(auth_token);
 
     if (username === null) {
         console.log("\tRejecting request due to invalid auth token");
@@ -164,7 +164,7 @@ api_router.get('/user', (req, res) => {
         return;
     }
 
-    const user_info = data.get_info(username);
+    const user_info = await data.get_info(username);
 
     if (user_info === null) {
         console.log(`\tUser ${username} does not exist`);
