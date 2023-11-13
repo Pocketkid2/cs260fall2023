@@ -7,6 +7,16 @@ const db = client.db('filmhub');
 const user_collection = db.collection('user');
 const auth_collection = db.collection('auth');
 
+// This will asynchronously test the connection and exit the process if it fails
+(async function testConnection() {
+    await client.connect();
+    await db.command({ ping: 1 });
+    console.log("Connected successfully to database");
+  })().catch((ex) => {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+  });
+
 var users = [];
 var auth_tokens = {};
 
