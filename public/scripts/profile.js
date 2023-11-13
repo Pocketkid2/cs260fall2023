@@ -14,7 +14,8 @@ function capitalize(str) {
 }
 
 function load_profile_info(user_info) {
-    document.getElementById("profile-name").innerHTML = `${user_info.first_name} ${user_info.last_name}`;
+    document.getElementById("profile-username").innerHTML = user_info.username;
+    document.getElementById("profile-realname").innerHTML = `${user_info.first_name} ${user_info.last_name}`;
     document.getElementById("profile-birthdate").innerHTML = custom_date_formatting(user_info.birth_date);
     document.getElementById("profile-creation-date").innerHTML = custom_date_formatting(user_info.creation_date);
 }
