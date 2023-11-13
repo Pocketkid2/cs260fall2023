@@ -12,10 +12,10 @@ const auth_collection = db.collection('auth');
     await client.connect();
     await db.command({ ping: 1 });
     console.log("Connected successfully to database");
-  })().catch((ex) => {
+})().catch((ex) => {
     console.log(`Unable to connect to database with ${url} because ${ex.message}`);
     process.exit(1);
-  });
+});
 
 var users = [];
 var auth_tokens = {};
