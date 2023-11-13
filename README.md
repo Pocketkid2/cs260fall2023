@@ -107,3 +107,4 @@ The one-stop shop for film nerds. You can find information about movies, read re
 * MongoDB Atlas database created (done, see assignment where I uploaded URL)
 * Provides backend endpoints for manipulating application data (see api_router and auth_router.js)
 * Stores application data in MongoDB (see data.js)
+* What's really changed between this and the service assignment? The data persists now after rebooting the NodeJS server.
