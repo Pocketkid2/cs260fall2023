@@ -51,3 +51,15 @@ HTTPS requires certificate
 ### Login
 
 `curl -c cookies.txt -X GET localhost:4000/auth/login -H 'Content-Type:application/json' -d '{"username":"pocketkid2","password":"asdf1234"}'`
+
+# Promises, Async, and Await: The Big Picture
+
+1. Your server needs data that it doesn't have
+2. To get it, it sends a request
+3. Since the request is sent to another machine, we can't guarantee when or if we will get a response
+4. We don't want to pause the entire machine while waiting for a response, so we have two choices:
+   a. Pause **this section** of the code and wait for the response, and let the rest of the code continue
+   b. Don't wait for the response, and maybe give the computer something to do if/when we get a response
+5. Promises is how we give the computer code something to do if it gets a response back from a request.
+6. `async` is what we put in front of a function to tell it "Hey, just so you know, we know you're going to be waiting on something, but we aren't going to wait for you
+7. `await` is what we put in front of an `async` function call to say to the computer "Hey, I know we told that function we weren't going to wait, but actually we need to wait until their code finishes before we can continue"
