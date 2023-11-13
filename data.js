@@ -1,3 +1,12 @@
+const { MongoClient } = require("mongodb");
+const config = require("./db_config.json");
+
+const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
+const client = new MongoClient(url);
+const db = client.db('filmhub');
+const user_collection = db.collection('user');
+const auth_collection = db.collection('auth');
+
 var users = [];
 var auth_tokens = {};
 
