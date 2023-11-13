@@ -119,7 +119,7 @@ function request_all_titles(results) {
     })
 }
 
-function add_button_if_nonextant(button_cell, film_string, list) {
+async function add_button_if_nonextant(button_cell, film_string, list) {
     fetch('/api/exists/' + list, {
         method: 'POST',
         headers: {
