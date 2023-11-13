@@ -101,3 +101,9 @@ The one-stop shop for film nerds. You can find information about movies, read re
   | `/api/user` | GET | yes | no | no | yes | Get user info from database |
 * Frontend calls backend provided service endpoints (see all scripts in /public/scripts/ folder except chat.js and index.js)
   - If you go to my site, you can sign up, login, see your profile, go to the search page and add films from the search results into one of your lists, and see them appear in your profile. If you log out and log back in, you will see the data persist (in memory, as the database has not been set up yet).
+
+## Startup DB Deliverables
+
+* MongoDB Atlas database created (done, see assignment where I uploaded URL)
+* Provides backend endpoints for manipulating application data (see api_router and auth_router.js)
+* Stores application data in MongoDB (see data.js)
