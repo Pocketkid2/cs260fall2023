@@ -104,7 +104,17 @@ The one-stop shop for film nerds. You can find information about movies, read re
 
 ## Startup DB Deliverables
 
-* MongoDB Atlas database created (done, see assignment where I uploaded URL)
-* Provides backend endpoints for manipulating application data (see api_router and auth_router.js)
-* Stores application data in MongoDB (see data.js)
-* What's really changed between this and the service assignment? The data persists now after rebooting the NodeJS server.
+All the data functionality was done with the service assignment, the difference between this and that is that now the data persists when you restart the server using `pm2 restart` as it pulls from MongoDB instead of using in-memory database
+
+* MongoDB Atlas database created (done, URL is in canvas assignment)
+* Provides backend endpoints for manipulating application data (see `api_router.js` and `auth_router.js`)
+* Stores application data in MongoDB (see `data.js`)
+
+## Startup Login Deliverables
+
+I had already done most of the login during the service and DB assignments, the main thing that I added for this assignment was bcrypt for password hashing and uuid for authentication tokens.
+
+* Supports new user registration (backend endpoint `/auth/signup` (see `auth_router.js`) as well as `signup.html` page)
+* Supports existing user authentication (backend endpoint `/auth/login` (see `auth_router.js`) as well as `login.html` page)
+* Stores and retrieves credentials in MongoDB (see `data.js`)
+* Restricts application functionality based upon authentication (see `/public/scripts/main.js` which loads navigation tabs based on login status)
