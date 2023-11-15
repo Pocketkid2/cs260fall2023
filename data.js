@@ -1,6 +1,9 @@
 const { MongoClient } = require("mongodb");
 const config = require("./db_config.json");
 
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
+
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('filmhub');
@@ -103,28 +106,38 @@ async function user_exists(username) {
 }
 
 async function add_user(user_object) {
-    // users.push(user_object);
-    await user_collection.insertOne(user_object);
-    console.log(`Added user ${user_object.username}`);
+    bcrypt.hash(user_object.password, 10, async function(err, hash) {
+        user_object.password = hash;
+        await user_collection.insertOne(user_object);
+        console.log(`Added user ${user_object.username}`);
+    });
 }
 
 // Attempts to authenticate with the given credentials.
 //  If successful, returns an auth token.
 //  If unsuccessful, returns null.
 async function authenticate_credentials(username, password) {
-    const user = await user_collection.findOne({ username: username, password: password });
+    const user = await user_collection.findOne({ username: username });
     if (user) {
-        const auth = await auth_collection.findOne({ username: username });
-        if (auth) {
-            console.log(`Returning existing authtoken ${auth.token}`);
-            return auth.token;
+        const result = await bcrypt.compare(password, user.password);
+        if (result) {
+            const auth = await auth_collection.findOne({ username: username });
+            if (auth) {
+                console.log(`Returning existing authtoken ${auth.token}`);
+                return auth.token;
+            } else {
+                const token = create_token(username);
+                console.log(`Created new authtoken ${token}`);
+                return token;
+            }
         } else {
-            const token = create_token(username);
-            console.log(`Created new authtoken ${token}`);
-            return token;
+            console.log(`Rejecting request due to incorrect password for user ${username}`);
+            return null;
         }
+    } else {
+        console.log(`Rejecting request due to non-existent username ${username}`);
+        return null;
     }
-    return null;
 }
 
 // Attempts to authenticate with the given auth token.
@@ -143,20 +156,9 @@ function delete_token(username) {
 }
 
 function create_token(username) {
-    var token = generate_random_auth_token();
+    var token = uuid.v4();
     
     auth_collection.insertOne({ username: username, token: token });
 
     return token;
-}
-
-function generate_random_auth_token() {
-    var length = 32;
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
 }
