@@ -44,6 +44,8 @@ auth_router.post('/login', async (req, res) => {
             console.log("\tUser already logged in");
             res.status(200).end();
             return;
+        } else {
+            res.cookie('auth_token', '');
         }
     }
 
