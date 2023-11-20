@@ -50,6 +50,13 @@ dd {
     font-style: italic;
 }
 
+dl > p {
+    font-size: .6em;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+}
+
 form {
     margin-top: 0;
     margin-bottom: .5em;
