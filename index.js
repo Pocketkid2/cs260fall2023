@@ -86,6 +86,10 @@ wss.on('connection', (ws, request, username) => {
     // Create a new connection for the given username
     const connection = { username: username, alive: true, ws: ws };
 
+    // Send a list of currently connected users to the new connection
+    const user_list = connections.map(connection => connection.username);
+    connection.ws.send(JSON.stringify({ type: 'user_list', user_list: user_list }));
+
     // Add it to the list
     connections.push(connection);
 

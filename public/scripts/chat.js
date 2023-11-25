@@ -16,6 +16,11 @@ socket.onmessage = async (event) => {
     const text = event.data;
     const message_object = JSON.parse(text);
     switch (message_object.type) {
+        case "user_list":
+            message_object.user_list.forEach(username => {
+                add_user(username);
+            });
+            break;
         case "new_user":
             add_user(message_object.username);
             display_custom_message(`${message_object.username} joined the chat`);
