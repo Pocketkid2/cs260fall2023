@@ -118,3 +118,12 @@ I had already done most of the login during the service and DB assignments, the 
 * Supports existing user authentication (backend endpoint `/auth/login` (see `auth_router.js`) as well as `login.html` page)
 * Stores and retrieves credentials in MongoDB (see `data.js`)
 * Restricts application functionality based upon authentication (see `/public/scripts/main.js` which loads navigation tabs based on login status)
+
+## Startup WebSocket Deliverables
+
+The difference between this and the previous deliverable assignment is that now the chat page functions correctly. Logged in users can see the navigation tab button for it, and when they go to the page, they are connected to the chat interface. All active and logged in users are displayed in the box (users who are also connected to the chat feature) and the chatbox works as you would expect it to.
+
+* Backend listens for WebSocket connection (see `index.js` after line 46)
+* Frontend makes WebSocket connection (see `public/scripts/chat.js`)
+* Data sent over WebSocket connection (`public/scripts/chat.js` line 63 and `index.js` lines 91, 98, 108, and 117)
+* WebSocket data displayed in the application interface (You can see this on the site when you are logged in)
